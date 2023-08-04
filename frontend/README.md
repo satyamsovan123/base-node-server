@@ -5,8 +5,8 @@
 ## Introduction
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
-This application serves as the frontend for [base-node-server](https://github.com/base-node-server) application.
-This is a very minimal and basic single page web application to quickly test out the server in the browser. It has been [documented](index.html), but I always strive to do better.
+This application serves as the frontend for [base-node-server](https://github.com/satyamsovan123/base-node-server/blob/main/backend/README.md) application.
+This is a very basic single page web application created to test out the base-node-server in the browser. It has been documented, but I always strive to do better.
 
 ## Running the application
 
@@ -18,4 +18,4 @@ Run `npm run compdoc` for generating documentation. Navigate to [http://127.0.0.
 
 ## Building the application (for production)
 
-Run `npm build` for generating production build files. Navigate to [dist](../dist) folder to see the files.
+Run `npm build` for generating production build files. Navigate to [dist](../frontend/dist/) folder to see the files.
