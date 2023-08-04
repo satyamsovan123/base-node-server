@@ -1,0 +1,29 @@
+{
+  "name": "base-node-server",
+  "version": "1.0.0",
+  "description": "This is the base node server for Node JS projects.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "base-node-server, node-backend"
+  ],
+  "author": "satyamsovan123",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.1",
+    "moment": "^2.29.4",
+    "mongoose": "^7.4.1",
+    "mongoose-paginate-v2": "^1.7.31",
+    "multer": "^1.4.5-lts.1",
+    "ws": "^8.13.0"
+  }
+}

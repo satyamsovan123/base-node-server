@@ -1,0 +1,63 @@
+.retro {
+  margin: 20px 20px;
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+    text-shadow: -20px -20px hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+    text-shadow: -5px -5px hue-rotate(-360deg);
+  }
+}
+
+.typography {
+  text-align: center;
+  font-size: 100px !important;
+  font-variation-settings: "wght" 450, "wdth" 180 !important;
+  margin: 20px 0px;
+
+  background-image: -webkit-linear-gradient(90deg, #f35626, #feab3a);
+  text-shadow: -5px -5px #feab3a;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 2s infinite cubic-bezier(0.165, 0.84, 0.44, 1)
+    alternate-reverse !important;
+}
+
+span {
+  text-emphasis: "x";
+  background-image: -webkit-linear-gradient(90deg, #f35626, #feab3a);
+  text-shadow: -5px -5px #feab3a;
+}
+
+@media (max-width: 768px) {
+  .typography {
+    font-size: 80px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .typography {
+    font-size: 50px !important;
+  }
+}
+
+.highlight {
+  position: relative;
+}
+.highlight:before {
+  content: "";
+  background-color: black;
+  width: 100%;
+  transform: rotate(-2.5deg);
+  height: 0.9em;
+  position: absolute;
+  z-index: -111;
+  left: -0.45em;
+  top: 0.1em;
+  padding: 0 0.2em;
+}

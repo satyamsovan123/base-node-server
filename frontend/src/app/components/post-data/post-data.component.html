@@ -1,0 +1,17 @@
+<section>
+  <form>
+    <div class="form-element">
+      <input placeholder="Title" type="text" name="title" />
+    </div>
+    <div class="form-element">
+      <textarea
+        placeholder="Article"
+        [(ngModel)]="article"
+        type="text"
+        name="article"
+      >
+      </textarea>
+    </div>
+  </form>
+  <button type="button" (click)="handlePostData()">Post data</button>
+</section>

@@ -1,0 +1,12 @@
+<section>
+  <button type="button" (click)="handleGetData()">Get data</button>
+  <div class="data highlight" *ngFor="let item of data">
+    <div class="box">
+      <p><span>username </span>{{ item.username }}</p>
+      <p><span>date </span>{{ formatDate(item.createdAt) }}</p>
+      <p><span>title </span>{{ item.title }}</p>
+      <p><span>article </span>{{ item.article }}</p>
+    </div>
+    <br />
+  </div>
+</section>

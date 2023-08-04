@@ -1,0 +1,116 @@
+* {
+  text-decoration: none;
+  color: #000;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+  font-variation-settings: "wght" 200, "wdth" 120;
+  font-size: 15px !important;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(90deg, #fff 10%, #cbcbcb 80%);
+}
+
+input:focus,
+textarea:focus,
+a:focus {
+  outline: none;
+  border: none;
+}
+
+a:focus,
+a:active,
+a:hover {
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  background: transparent;
+  width: max-content;
+}
+
+input:focus,
+textarea:focus {
+  border: 1px solid #000;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  background: transparent;
+}
+
+input,
+textarea {
+  border: 1px solid #000;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  background: transparent;
+}
+
+textarea {
+  height: 100px;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: row;
+  align-items: first baseline;
+  align-self: first baseline;
+  margin: 20px 0px;
+}
+
+.form-element > :not(:first-child) {
+  margin: 0px 20px;
+}
+
+button {
+  margin: 20px 0px;
+  border: 1px solid #000;
+  background: transparent;
+  padding: 10px 20px;
+  cursor: pointer;
+  max-width: fit-content;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.message {
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  * {
+    font-size: 10px !important;
+  }
+}
+
+input,
+textarea {
+  width: 400px !important;
+  margin: 10px 0px !important;
+}
+
+@media (max-width: 500px) {
+  input,
+  textarea {
+    width: auto !important;
+  }
+}

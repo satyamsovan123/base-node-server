@@ -1,0 +1,16 @@
+<section>
+  <div class="retro">
+    <p class="typography">
+      <span class="typography highlight">Base</span> Frontend
+    </p>
+    <br />
+    <br />
+    <app-navbar></app-navbar>
+    <br />
+    <app-notification></app-notification>
+    <p class="message" *ngIf="loaderStatus">Loading...</p>
+    <br />
+    <router-outlet></router-outlet>
+  </div>
+  <app-web-socket></app-web-socket>
+</section>

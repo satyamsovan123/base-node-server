@@ -1,0 +1,47 @@
+.box {
+  border: 1px solid #000;
+  padding: 20px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+span {
+  font-variation-settings: "wght" 350, "wdth" 120;
+}
+
+.highlight {
+  position: relative;
+}
+.highlight:after {
+  position: absolute;
+  content: "xoxoxoxoxo";
+  color: white;
+  text-align: center;
+  background-image: -webkit-linear-gradient(90deg, #3d3d3d, #9f9f9f);
+  width: min-content;
+  transform: rotate(8.5deg);
+  height: 1.9em;
+  z-index: -111;
+  top: 0.04em;
+  right: 0.45em;
+  padding: 0 0.2em;
+  text-emphasis: "x";
+  filter: blur(0.5px);
+}
+
+.highlight:nth-child(2n + 1):after {
+  transform: rotate(1.8deg);
+  left: -7.15em;
+  left: auto;
+}
+
+.highlight:nth-child(2n):after {
+  transform: rotate(-8.5deg);
+  left: -1.45em;
+  right: auto;
+}

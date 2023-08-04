@@ -1,0 +1,13 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav > * {
+  font-variation-settings: "wght" 450, "wdth" 180 !important;
+}
+
+nav > a:not(:first-child) {
+  margin-left: 10px;
+}
