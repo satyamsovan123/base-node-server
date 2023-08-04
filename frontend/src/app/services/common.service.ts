@@ -116,11 +116,15 @@ export class CommonService {
      * Resetting the token and username.
      */
     this.updateLoaderSubject(true);
+    this.updateNotificationSubject(
+      `${appConstant.success} ${appConstant.signOut}.`
+    );
     this.token = '';
     this.username = '';
     sessionStorage.removeItem(appConstant.authorizationHeaderKey);
     sessionStorage.removeItem('username');
     this.router.navigate(['/signin']);
+    this.updateLoaderSubject(false);
   }
 
   /**

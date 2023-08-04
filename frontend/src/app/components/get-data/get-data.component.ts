@@ -25,6 +25,19 @@ export class GetDataComponent implements OnDestroy {
   ) {}
 
   /**
+   * This is the text to be shown on the button. It is initialized with 'Get data'.
+   * @type {string}
+   * @default 'Get data'
+   */
+  buttonText: string = 'Get data';
+
+  /**
+   * This is the current offset. It is initialized with 0. It will be the marker for the subsequent API call.
+   * @type {number}
+   */
+  currentOffset: number = 0;
+
+  /**
    * This is the data to be shown on the screen. It is initialized with an empty array.
    * @type {[]ResponseData}
    * @default []
@@ -43,11 +56,14 @@ export class GetDataComponent implements OnDestroy {
    * It will show the loader on the screen while the API call is in progress. After the API call is completed, it will hide the loader. It will show the notification on the screen based on the response from the backend.
    * It subscribes to the [handleGetData]{@link BackendService#handleGetData} to get the data from the backend. It will update the [data]{@link data} with the data received from the backend. For error, it will reset data variable, show the error message on the screen and log the error in the console.
    * If the user is not logged in or the token is expired, then it will sign out the user.
+   *
+   * The "Get data" button will become "Get more data" button after the first API call.
+   * If the user clicks on the "Get more data" button again, it will call the [handleGetData]{@link BackendService#handleGetData} method again.
    */
   handleGetData(): void {
     this.commonService.updateLoaderSubject(true);
     this.subscription = this.backendService
-      .handleGetData()
+      .handleGetData(this.currentOffset)
       .pipe(
         finalize(() => {
           this.commonService.updateLoaderSubject(false);
@@ -55,12 +71,23 @@ export class GetDataComponent implements OnDestroy {
       )
       .subscribe({
         next: (response: any) => {
-          this.commonService.logger(response.data);
-          this.data = response.data;
+          this.commonService.logger(response.data.docs);
+          this.data = response.data.docs;
           this.commonService.updateNotificationSubject(
             response?.message ||
               `${appConstant.success} ${appConstant.getData}.`
           );
+
+          /**
+           * Updating button text and increasing the current offset with the limit per page until the current offset is greater than or equal to the total number of documents.
+           */
+          this.buttonText = 'Get more data';
+
+          const limitPerPage = response.data?.limit ?? 0;
+          this.currentOffset = this.currentOffset + limitPerPage;
+          if (this.currentOffset >= response.data.totalDocs) {
+            this.currentOffset = 0;
+          }
         },
         error: (error: any) => {
           this.data = [];
@@ -97,7 +124,10 @@ export class GetDataComponent implements OnDestroy {
       if (!date) {
         return '';
       }
-      return new Date(date).toLocaleString();
+      return new Date(date)
+        .toLocaleString('en-IN')
+        .replace('am', 'AM')
+        .replace('pm', 'PM');
     } catch {
       return '';
     }

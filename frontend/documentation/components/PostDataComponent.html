@@ -331,8 +331,8 @@ If the user is not logged in or the token is expired, then it will sign out the 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">src/app/components/post-data/post-data.component.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/app/components/post-data/post-data.component.ts:108</a></div>
                 </td>
             </tr>
 
@@ -549,6 +549,18 @@ export class PostDataComponent implements OnDestroy {
         },
         error: (error: any) &#x3D;&gt; {
           this.commonService.logger(error);
+
+          /**
+           * If the user is not logged in or the token is expired, then it will sign out the user, and user is notified with the error message.
+           */
+          if (error?.status &#x3D;&#x3D;&#x3D; 401) {
+            this.commonService.updateNotificationSubject(
+              &#x60;${appConstant.error} ${appConstant.signInAgain}.&#x60;
+            );
+            this.commonService.signOut();
+            return;
+          }
+
           this.commonService.updateNotificationSubject(
             error.error?.message ||
               &#x60;${appConstant.error} ${appConstant.postData}.&#x60;
@@ -577,7 +589,7 @@ export class PostDataComponent implements OnDestroy {
         <pre class="line-numbers"><code class="language-html">&lt;section&gt;
   &lt;form&gt;
     &lt;div class&#x3D;&quot;form-element&quot;&gt;
-      &lt;input placeholder&#x3D;&quot;Title&quot; type&#x3D;&quot;text&quot; name&#x3D;&quot;title&quot; /&gt;
+      &lt;input placeholder&#x3D;&quot;Title&quot; type&#x3D;&quot;text&quot; name&#x3D;&quot;title&quot; [(ngModel)]&#x3D;&quot;title&quot; /&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;form-element&quot;&gt;
       &lt;textarea
@@ -626,7 +638,7 @@ export class PostDataComponent implements OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><section>  <form>    <div class="form-element">      <input placeholder="Title" type="text" name="title" />    </div>    <div class="form-element">      <textarea        placeholder="Article"        [(ngModel)]="article"        type="text"        name="article"      >      </textarea>    </div>  </form>  <button type="button" (click)="handlePostData()">Post data</button></section></div>'
+        var COMPONENT_TEMPLATE = '<div><section>  <form>    <div class="form-element">      <input placeholder="Title" type="text" name="title" [(ngModel)]="title" />    </div>    <div class="form-element">      <textarea        placeholder="Article"        [(ngModel)]="article"        type="text"        name="article"      >      </textarea>    </div>  </form>  <button type="button" (click)="handlePostData()">Post data</button></section></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GetDataComponent', 'selector': 'app-get-data'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'PostDataComponent', 'selector': 'app-post-data'},{'name': 'SigninComponent', 'selector': 'app-signin'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'WebSocketComponent', 'selector': 'app-web-socket'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PostDataComponent'};

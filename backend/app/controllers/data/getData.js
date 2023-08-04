@@ -8,6 +8,11 @@ const {
   apiConstant,
 } = require("../../../constants");
 
+const mongoosePaginate = require("mongoose-paginate-v2");
+
+const { paginationOptions } = require("../../../configs/paginationOptions");
+const { sanitizeURLQueryParam } = require("../../../utils");
+
 const getData = async (req, res) => {
   let response = {
     data: {},
@@ -15,26 +20,36 @@ const getData = async (req, res) => {
     code: responseCodeConstant.GENERIC_SUCCESS,
   };
   try {
-    let data = await Post.find({}).select(
-      "title article username createdAt -_id"
-    );
+    const offset = sanitizeURLQueryParam(req.query.offset);
+    paginationOptions.offset = offset;
 
-    if (data.length === 0) {
+    const data = await Post.paginate({}, paginationOptions, (error, result) => {
+      if (error) {
+        logger(error);
+        response.message = `${apiConstant.DATA} ${responseConstant.STATUS_FAILURE}`;
+        response.code = responseCodeConstant.GENERIC_ERROR;
+        const generatedResponse = responseBuilder(response);
+        return res.status(generatedResponse.code).send(generatedResponse);
+      }
+      return result;
+    });
+
+    if ((data && data.length === 0) || !data) {
       response.message = `${responseConstant.NO_DATA_FOUND}`;
       response.code = `${responseCodeConstant.NOT_FOUND}`;
-      let generatedResponse = responseBuilder(response);
+      const generatedResponse = responseBuilder(response);
       return res.status(generatedResponse.code).send(generatedResponse);
     }
 
     response.data = data;
     response.message = `${apiConstant.DATA} ${responseConstant.STATUS_SUCCESSFUL}`;
-    let generatedResponse = responseBuilder(response);
+    const generatedResponse = responseBuilder(response);
     return res.status(generatedResponse.code).send(generatedResponse);
   } catch (error) {
     logger(error);
     response.message = `${apiConstant.DATA} ${responseConstant.STATUS_FAILURE}`;
     response.code = responseCodeConstant.GENERIC_ERROR;
-    let generatedResponse = responseBuilder(response);
+    const generatedResponse = responseBuilder(response);
     return res.status(generatedResponse.code).send(generatedResponse);
   }
 };
@@ -46,25 +61,25 @@ const getRandomData = async (req, res) => {
     code: responseCodeConstant.GENERIC_SUCCESS,
   };
   try {
-    let data = await Post.find({}).select(
+    const data = await Post.find({}).select(
       "title article username createdAt -_id"
     );
     if (data.length === 0) {
       response.code = `${responseCodeConstant.NOT_FOUND}`;
       response.message = `${responseConstant.NO_DATA_FOUND}`;
-      let generatedResponse = responseBuilder(response);
+      const generatedResponse = responseBuilder(response);
       return res.status(generatedResponse.code).send(generatedResponse);
     }
     const randomIndex = Math.floor(Math.random() * data.length);
     response.data = data[randomIndex];
     response.message = `${apiConstant.DATA} ${responseConstant.STATUS_SUCCESSFUL}`;
-    let generatedResponse = responseBuilder(response);
+    const generatedResponse = responseBuilder(response);
     return res.status(generatedResponse.code).send(generatedResponse);
   } catch (error) {
     logger(error);
     response.message = `${apiConstant.DATA} ${responseConstant.STATUS_FAILURE}`;
     response.code = responseCodeConstant.GENERIC_ERROR;
-    let generatedResponse = responseBuilder(response);
+    const generatedResponse = responseBuilder(response);
     return res.status(generatedResponse.code).send(generatedResponse);
   }
 };

@@ -19,6 +19,13 @@ const getServerDetails = () => {
       }`
     );
     console.log(
+      `- Pagination: ${
+        JSON.parse(process.env.USE_PAGINATION)
+          ? `using pagination`
+          : "not using pagination"
+      }`
+    );
+    console.log(
       `- Authentication: ${
         JSON.parse(process.env.USE_AUTHENTICATION)
           ? `using authentication`

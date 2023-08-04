@@ -212,24 +212,56 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handleGetData()</code>
+<code>handleGetData(currentOffset: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">src/app/services/backend.service.ts:79</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/services/backend.service.ts:80</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>This method is used to get all the data from the backend.</p>
+                    <div class="io-description"><p>This method is used to get all the data from the backend. This uses pagination.</p>
 </div>
 
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>currentOffset</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>is the current offset. It is used to get the data from the backend. It will be the marker for the subsequent API call. This is passed as a query parameter to the backend.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div>
                     </div>
                     <div class="io-description">
@@ -264,8 +296,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">src/app/services/backend.service.ts:94</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">src/app/services/backend.service.ts:97</a></div>
                 </td>
             </tr>
 
@@ -303,8 +335,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">src/app/services/backend.service.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">src/app/services/backend.service.ts:90</a></div>
                 </td>
             </tr>
 
@@ -713,11 +745,14 @@ export class BackendService {
   }
 
   /**
-   * This method is used to get all the data from the backend.
+   * This method is used to get all the data from the backend. This uses pagination.
+   * @param {number} currentOffset is the current offset. It is used to get the data from the backend. It will be the marker for the subsequent API call. This is passed as a query parameter to the backend.
    * @returns the response from the backend in the form of an observable.
    */
-  handleGetData() {
-    return this.httpClient.get(this.backendUrl + apiPathConstant.data);
+  handleGetData(currentOffset: number) {
+    return this.httpClient.get(
+      this.backendUrl + apiPathConstant.data + &#x60;?offset&#x3D;${currentOffset}&#x60;
+    );
   }
 
   /**

@@ -149,6 +149,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#buttonText" >buttonText</a>
+                            </li>
+                            <li>
+                                <a href="#currentOffset" >currentOffset</a>
+                            </li>
+                            <li>
                                 <a href="#data" >data</a>
                             </li>
                             <li>
@@ -289,8 +295,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">src/app/components/get-data/get-data.component.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/app/components/get-data/get-data.component.ts:122</a></div>
                 </td>
             </tr>
 
@@ -370,8 +376,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">src/app/components/get-data/get-data.component.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/components/get-data/get-data.component.ts:63</a></div>
                 </td>
             </tr>
 
@@ -382,6 +388,8 @@
 It will show the loader on the screen while the API call is in progress. After the API call is completed, it will hide the loader. It will show the notification on the screen based on the response from the backend.
 It subscribes to the <a href="../injectables/BackendService.html#handleGetData">handleGetData</a> to get the data from the backend. It will update the <a href="data">data</a> with the data received from the backend. For error, it will reset data variable, show the error message on the screen and log the error in the console.
 If the user is not logged in or the token is expired, then it will sign out the user.</p>
+<p>The &quot;Get data&quot; button will become &quot;Get more data&quot; button after the first API call.
+If the user clicks on the &quot;Get more data&quot; button again, it will call the <a href="../injectables/BackendService.html#handleGetData">handleGetData</a> method again.</p>
 </div>
 
                     <div class="io-description">
@@ -412,8 +420,8 @@ If the user is not logged in or the token is expired, then it will sign out the 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="101"
-                            class="link-to-prism">src/app/components/get-data/get-data.component.ts:101</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">src/app/components/get-data/get-data.component.ts:139</a></div>
                 </td>
             </tr>
 
@@ -441,6 +449,80 @@ If the user is not logged in or the token is expired, then it will sign out the 
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="buttonText"></a>
+                    <span class="name">
+                        <span ><b>buttonText</b></span>
+                        <a href="#buttonText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Get data&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/get-data/get-data.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This is the text to be shown on the button. It is initialized with &#39;Get data&#39;.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="currentOffset"></a>
+                    <span class="name">
+                        <span ><b>currentOffset</b></span>
+                        <a href="#currentOffset"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/get-data/get-data.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This is the current offset. It is initialized with 0. It will be the marker for the subsequent API call.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="data"></a>
                     <span class="name">
                         <span ><b>data</b></span>
@@ -461,7 +543,7 @@ If the user is not logged in or the token is expired, then it will sign out the 
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/get-data/get-data.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/get-data/get-data.component.ts:45</a></div>
                         </td>
                     </tr>
 
@@ -494,7 +576,7 @@ If the user is not logged in or the token is expired, then it will sign out the 
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/get-data/get-data.component.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/components/get-data/get-data.component.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -540,6 +622,19 @@ export class GetDataComponent implements OnDestroy {
   ) {}
 
   /**
+   * This is the text to be shown on the button. It is initialized with &#x27;Get data&#x27;.
+   * @type {string}
+   * @default &#x27;Get data&#x27;
+   */
+  buttonText: string &#x3D; &#x27;Get data&#x27;;
+
+  /**
+   * This is the current offset. It is initialized with 0. It will be the marker for the subsequent API call.
+   * @type {number}
+   */
+  currentOffset: number &#x3D; 0;
+
+  /**
    * This is the data to be shown on the screen. It is initialized with an empty array.
    * @type {[]ResponseData}
    * @default []
@@ -558,11 +653,14 @@ export class GetDataComponent implements OnDestroy {
    * It will show the loader on the screen while the API call is in progress. After the API call is completed, it will hide the loader. It will show the notification on the screen based on the response from the backend.
    * It subscribes to the [handleGetData]{@link BackendService#handleGetData} to get the data from the backend. It will update the [data]{@link data} with the data received from the backend. For error, it will reset data variable, show the error message on the screen and log the error in the console.
    * If the user is not logged in or the token is expired, then it will sign out the user.
+   *
+   * The &quot;Get data&quot; button will become &quot;Get more data&quot; button after the first API call.
+   * If the user clicks on the &quot;Get more data&quot; button again, it will call the [handleGetData]{@link BackendService#handleGetData} method again.
    */
   handleGetData(): void {
     this.commonService.updateLoaderSubject(true);
     this.subscription &#x3D; this.backendService
-      .handleGetData()
+      .handleGetData(this.currentOffset)
       .pipe(
         finalize(() &#x3D;&gt; {
           this.commonService.updateLoaderSubject(false);
@@ -570,24 +668,43 @@ export class GetDataComponent implements OnDestroy {
       )
       .subscribe({
         next: (response: any) &#x3D;&gt; {
-          this.commonService.logger(response.data);
-          this.data &#x3D; response.data;
+          this.commonService.logger(response.data.docs);
+          this.data &#x3D; response.data.docs;
           this.commonService.updateNotificationSubject(
             response?.message ||
               &#x60;${appConstant.success} ${appConstant.getData}.&#x60;
           );
+
+          /**
+           * Updating button text and increasing the current offset with the limit per page until the current offset is greater than or equal to the total number of documents.
+           */
+          this.buttonText &#x3D; &#x27;Get more data&#x27;;
+
+          const limitPerPage &#x3D; response.data?.limit ?? 0;
+          this.currentOffset &#x3D; this.currentOffset + limitPerPage;
+          if (this.currentOffset &gt;&#x3D; response.data.totalDocs) {
+            this.currentOffset &#x3D; 0;
+          }
         },
         error: (error: any) &#x3D;&gt; {
           this.data &#x3D; [];
           this.commonService.logger(error);
+
+          /**
+           * If the user is not logged in or the token is expired, then it will sign out the user, and user is notified with the error message.
+           */
+          if (error?.status &#x3D;&#x3D;&#x3D; 401) {
+            this.commonService.updateNotificationSubject(
+              &#x60;${appConstant.error} ${appConstant.signInAgain}.&#x60;
+            );
+            this.commonService.signOut();
+            return;
+          }
+
           this.commonService.updateNotificationSubject(
             error.error?.message ||
               &#x60;${appConstant.error} ${appConstant.getData}.&#x60;
           );
-
-          if (error?.status &#x3D;&#x3D;&#x3D; 401) {
-            this.commonService.signOut();
-          }
         },
       });
   }
@@ -604,7 +721,10 @@ export class GetDataComponent implements OnDestroy {
       if (!date) {
         return &#x27;&#x27;;
       }
-      return new Date(date).toLocaleString();
+      return new Date(date)
+        .toLocaleString(&#x27;en-IN&#x27;)
+        .replace(&#x27;am&#x27;, &#x27;AM&#x27;)
+        .replace(&#x27;pm&#x27;, &#x27;PM&#x27;);
     } catch {
       return &#x27;&#x27;;
     }
@@ -624,7 +744,7 @@ export class GetDataComponent implements OnDestroy {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;section&gt;
-  &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;handleGetData()&quot;&gt;Get data&lt;/button&gt;
+  &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;handleGetData()&quot;&gt;{{ buttonText }}&lt;/button&gt;
   &lt;div class&#x3D;&quot;data highlight&quot; *ngFor&#x3D;&quot;let item of data&quot;&gt;
     &lt;div class&#x3D;&quot;box&quot;&gt;
       &lt;p&gt;&lt;span&gt;username &lt;/span&gt;{{ item.username }}&lt;/p&gt;
@@ -717,7 +837,7 @@ span {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><section>  <button type="button" (click)="handleGetData()">Get data</button>  <div class="data highlight" *ngFor="let item of data">    <div class="box">      <p><span>username </span>{{ item.username }}</p>      <p><span>date </span>{{ formatDate(item.createdAt) }}</p>      <p><span>title </span>{{ item.title }}</p>      <p><span>article </span>{{ item.article }}</p>    </div>    <br />  </div></section></div>'
+        var COMPONENT_TEMPLATE = '<div><section>  <button type="button" (click)="handleGetData()">{{ buttonText }}</button>  <div class="data highlight" *ngFor="let item of data">    <div class="box">      <p><span>username </span>{{ item.username }}</p>      <p><span>date </span>{{ formatDate(item.createdAt) }}</p>      <p><span>title </span>{{ item.title }}</p>      <p><span>article </span>{{ item.article }}</p>    </div>    <br />  </div></section></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GetDataComponent', 'selector': 'app-get-data'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'PostDataComponent', 'selector': 'app-post-data'},{'name': 'SigninComponent', 'selector': 'app-signin'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'WebSocketComponent', 'selector': 'app-web-socket'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'GetDataComponent'};

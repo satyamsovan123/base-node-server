@@ -73,11 +73,14 @@ export class BackendService {
   }
 
   /**
-   * This method is used to get all the data from the backend.
+   * This method is used to get all the data from the backend. This uses pagination.
+   * @param {number} currentOffset is the current offset. It is used to get the data from the backend. It will be the marker for the subsequent API call. This is passed as a query parameter to the backend.
    * @returns the response from the backend in the form of an observable.
    */
-  handleGetData() {
-    return this.httpClient.get(this.backendUrl + apiPathConstant.data);
+  handleGetData(currentOffset: number) {
+    return this.httpClient.get(
+      this.backendUrl + apiPathConstant.data + `?offset=${currentOffset}`
+    );
   }
 
   /**

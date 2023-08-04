@@ -1,5 +1,5 @@
 <section>
-  <button type="button" (click)="handleGetData()">Get data</button>
+  <button type="button" (click)="handleGetData()">{{ buttonText }}</button>
   <div class="data highlight" *ngFor="let item of data">
     <div class="box">
       <p><span>username </span>{{ item.username }}</p>

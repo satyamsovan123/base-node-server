@@ -267,8 +267,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="214"
-                            class="link-to-prism">src/app/services/common.service.ts:214</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/app/services/common.service.ts:192</a></div>
                 </td>
             </tr>
 
@@ -308,8 +308,8 @@ It will try to decode the token. If an error occurs while decoding the token, it
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="159"
-                            class="link-to-prism">src/app/services/common.service.ts:159</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="137"
+                            class="link-to-prism">src/app/services/common.service.ts:137</a></div>
                 </td>
             </tr>
 
@@ -389,8 +389,8 @@ It will try to decode the token. If an error occurs while decoding the token, it
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="257"
-                            class="link-to-prism">src/app/services/common.service.ts:257</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">src/app/services/common.service.ts:241</a></div>
                 </td>
             </tr>
 
@@ -1057,7 +1057,7 @@ It will try to decode the token. If an error occurs while decoding the token, it
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="205" class="link-to-prism">src/app/services/common.service.ts:205</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="183" class="link-to-prism">src/app/services/common.service.ts:183</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1081,7 +1081,7 @@ It will try to decode the token. If an error occurs while decoding the token, it
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">src/app/services/common.service.ts:196</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/app/services/common.service.ts:174</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1253,37 +1253,15 @@ export class CommonService {
      * Resetting the token and username.
      */
     this.updateLoaderSubject(true);
+    this.updateNotificationSubject(
+      &#x60;${appConstant.success} ${appConstant.signOut}.&#x60;
+    );
     this.token &#x3D; &#x27;&#x27;;
     this.username &#x3D; &#x27;&#x27;;
     sessionStorage.removeItem(appConstant.authorizationHeaderKey);
     sessionStorage.removeItem(&#x27;username&#x27;);
-
-    /**
-     * Calling the [handleSignOut]{@link handleSignOut} method of the [backendService]{@link BackendService}. If the sign out is successful, it will update the [notificationSubject]{@link notificationSubject} with the message from the response. If an error occurs, it will update the [notificationSubject]{@link notificationSubject} with the error message.
-     */
-    this.backendService
-      .handleSignOut()
-      .pipe(
-        finalize(() &#x3D;&gt; {
-          this.updateLoaderSubject(false);
-          this.router.navigate([&#x27;/signin&#x27;]);
-        })
-      )
-      .subscribe({
-        next: (response: any) &#x3D;&gt; {
-          this.updateNotificationSubject(
-            response?.body?.message ||
-              &#x60;${appConstant.success} ${appConstant.signOut}.&#x60;
-          );
-        },
-        error: (error: any) &#x3D;&gt; {
-          this.logger(error);
-          this.updateNotificationSubject(
-            error.error?.message ||
-              &#x60;${appConstant.error} ${appConstant.signOut}.&#x60;
-          );
-        },
-      });
+    this.router.navigate([&#x27;/signin&#x27;]);
+    this.updateLoaderSubject(false);
   }
 
   /**
@@ -1355,10 +1333,16 @@ export class CommonService {
       );
       const sessionStorageUsername &#x3D; sessionStorage.getItem(&#x27;username&#x27;);
 
+      /**
+       * If the token is empty or the username is empty, then returning from the method.
+       */
+      if (!sessionStorageToken || !sessionStorageUsername) {
+        return;
+      }
+
       const decodedToken: DecodedJWT &#x3D; this.decodeToken(
         sessionStorageToken ?? &#x27;&#x27;
       );
-
       /**
        * If the decoded token has username as empty, calling the [signOut]{@link signOut} method.
        * If the username in the token does not match the username in the session storage, calling the [signOut]{@link signOut} method.

@@ -50,4 +50,4 @@ app.listen(port, () => {
   getServerDetails();
 });
 
-// npm i express cors dotenv multer mongoose cookie-parser helmet joi bcrypt jsonwebtoken moment ws mongoose-paginate-v2
+// npm i express cors dotenv multer mongoose cookie-parser helmet joi bcrypt jsonwebtoken moment ws mongoose-paginate-v2 jsdoc
