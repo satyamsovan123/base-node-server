@@ -19,6 +19,13 @@ const getData = async (req, res) => {
       "title article username createdAt -_id"
     );
 
+    if (data.length === 0) {
+      response.message = `${responseConstant.NO_DATA_FOUND}`;
+      response.code = `${responseCodeConstant.NOT_FOUND}`;
+      let generatedResponse = responseBuilder(response);
+      return res.status(generatedResponse.code).send(generatedResponse);
+    }
+
     response.data = data;
     response.message = `${apiConstant.DATA} ${responseConstant.STATUS_SUCCESSFUL}`;
     let generatedResponse = responseBuilder(response);
@@ -43,6 +50,7 @@ const getRandomData = async (req, res) => {
       "title article username createdAt -_id"
     );
     if (data.length === 0) {
+      response.code = `${responseCodeConstant.NOT_FOUND}`;
       response.message = `${responseConstant.NO_DATA_FOUND}`;
       let generatedResponse = responseBuilder(response);
       return res.status(generatedResponse.code).send(generatedResponse);

@@ -120,33 +120,7 @@ export class CommonService {
     this.username = '';
     sessionStorage.removeItem(appConstant.authorizationHeaderKey);
     sessionStorage.removeItem('username');
-
-    /**
-     * Calling the [handleSignOut]{@link handleSignOut} method of the [backendService]{@link BackendService}. If the sign out is successful, it will update the [notificationSubject]{@link notificationSubject} with the message from the response. If an error occurs, it will update the [notificationSubject]{@link notificationSubject} with the error message.
-     */
-    this.backendService
-      .handleSignOut()
-      .pipe(
-        finalize(() => {
-          this.updateLoaderSubject(false);
-          this.router.navigate(['/signin']);
-        })
-      )
-      .subscribe({
-        next: (response: any) => {
-          this.updateNotificationSubject(
-            response?.body?.message ||
-              `${appConstant.success} ${appConstant.signOut}.`
-          );
-        },
-        error: (error: any) => {
-          this.logger(error);
-          this.updateNotificationSubject(
-            error.error?.message ||
-              `${appConstant.error} ${appConstant.signOut}.`
-          );
-        },
-      });
+    this.router.navigate(['/signin']);
   }
 
   /**
@@ -218,10 +192,16 @@ export class CommonService {
       );
       const sessionStorageUsername = sessionStorage.getItem('username');
 
+      /**
+       * If the token is empty or the username is empty, then returning from the method.
+       */
+      if (!sessionStorageToken || !sessionStorageUsername) {
+        return;
+      }
+
       const decodedToken: DecodedJWT = this.decodeToken(
         sessionStorageToken ?? ''
       );
-
       /**
        * If the decoded token has username as empty, calling the [signOut]{@link signOut} method.
        * If the username in the token does not match the username in the session storage, calling the [signOut]{@link signOut} method.

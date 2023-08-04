@@ -12,4 +12,5 @@ export const appConstant = {
   signOut: '- signing out',
   getData: '- getting data',
   postData: '- posting data',
+  signInAgain: '- sign in again',
 };

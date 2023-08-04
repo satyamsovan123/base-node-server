@@ -78,6 +78,18 @@ export class PostDataComponent implements OnDestroy {
         },
         error: (error: any) => {
           this.commonService.logger(error);
+
+          /**
+           * If the user is not logged in or the token is expired, then it will sign out the user, and user is notified with the error message.
+           */
+          if (error?.status === 401) {
+            this.commonService.updateNotificationSubject(
+              `${appConstant.error} ${appConstant.signInAgain}.`
+            );
+            this.commonService.signOut();
+            return;
+          }
+
           this.commonService.updateNotificationSubject(
             error.error?.message ||
               `${appConstant.error} ${appConstant.postData}.`
