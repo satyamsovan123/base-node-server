@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/services/common.service';
+import { Subscription } from 'rxjs';
 
 /**
  * This component is used to show the navigation bar on the screen.
@@ -9,7 +10,7 @@ import { CommonService } from 'src/app/services/common.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   /**
    * This is the constructor of this component.
    * @param commonService is used to update the [loggedInUserSubject]{@link CommonService#loggedInUserSubject}.
@@ -21,6 +22,13 @@ export class NavbarComponent implements OnInit {
    * @default ''
    */
   loggedInUser: string = '';
+
+  /**
+   * This is the subscription that would be used in this component. It is initialized with an empty subscription.
+   * @type {Subscription}
+   * @private
+   */
+  private subscription!: Subscription;
 
   /**
    * This method is used to initialize the component. It will check if the user is logged in or not.
@@ -42,7 +50,7 @@ export class NavbarComponent implements OnInit {
    * This is also use to show the logged in user's name on the screen.
    */
   checkIsLoggedIn(): void {
-    this.commonService.loggedInUserSubject.subscribe({
+    this.subscription = this.commonService.loggedInUserSubject.subscribe({
       next: (loggedInUser: string) => {
         this.loggedInUser = loggedInUser;
       },
@@ -51,5 +59,14 @@ export class NavbarComponent implements OnInit {
         this.commonService.logger(error);
       },
     });
+  }
+
+  /**
+   * This is called when the component is destroyed. It will unsubscribe from the subscription if it is present.
+   */
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

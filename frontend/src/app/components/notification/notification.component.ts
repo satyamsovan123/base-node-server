@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
 import { appConstant } from 'src/constants/app.constant';
 
@@ -10,7 +11,7 @@ import { appConstant } from 'src/constants/app.constant';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.css'],
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent implements OnInit, OnDestroy {
   /**
    * This is the constructor of this component.
    * @param commonService is used to subscribe to the [notificationSubject]{@link CommonService#notificationSubject}.
@@ -25,17 +26,35 @@ export class NotificationComponent implements OnInit {
   notification: string = '';
 
   /**
+   * This is the subscription that would be used in this component. It is initialized with an empty subscription.
+   * @type {Subscription}
+   * @private
+   */
+  private subscription!: Subscription;
+
+  /**
    * This method is used to initialize the component. It will subscribe to the [notificationSubject]{@link CommonService#notificationSubject} to get the updated notification to be shown on the screen.
    */
   ngOnInit(): void {
-    this.commonService.notificationSubject$.subscribe((notification: any) => {
-      this.notification = notification;
-      /**
-       * This is used to hide the notification after a certain time.
-       */
-      setTimeout(() => {
-        this.notification = '';
-      }, appConstant.hideNotifcationAfter);
-    });
+    this.subscription = this.commonService.notificationSubject$.subscribe(
+      (notification: any) => {
+        this.notification = notification;
+        /**
+         * This is used to hide the notification after a certain time.
+         */
+        setTimeout(() => {
+          this.notification = '';
+        }, appConstant.hideNotifcationAfter);
+      }
+    );
+  }
+
+  /**
+   * This is called when the component is destroyed. It will unsubscribe from the subscription if it is present.
+   */
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

@@ -1141,7 +1141,7 @@ import { Router } from &#x27;@angular/router&#x27;;
 import { BackendService } from &#x27;./backend.service&#x27;;
 import { environment } from &#x27;src/environments/environment&#x27;;
 import { appConstant } from &#x27;src/constants/app.constant&#x27;;
-import { DecodedJWT } from &#x27;../models/decodedJWT.model&#x27;;
+import { DecodedJWT } from &#x27;../models/DecodedJWT.model&#x27;;
 
 /**
  * This is the common service. It has the methods and shared observables that are used throughout the application. Therefore, it is injected in the [app.module.ts]{@link AppModule} file.
@@ -1242,7 +1242,7 @@ export class CommonService {
    * @type {string}
    */
   get token(): string {
-    return sessionStorage.getItem(appConstant.authorizationHeaderKey) || &#x27;&#x27;;
+    return sessionStorage.getItem(appConstant.authorizationHeaderKey) ?? &#x27;&#x27;;
   }
 
   /**
@@ -1340,7 +1340,7 @@ export class CommonService {
    * @type {string}
    */
   get username(): string {
-    return sessionStorage.getItem(&#x27;username&#x27;) || &#x27;&#x27;;
+    return sessionStorage.getItem(&#x27;username&#x27;) ?? &#x27;&#x27;;
   }
 
   /**
@@ -1356,7 +1356,7 @@ export class CommonService {
       const sessionStorageUsername &#x3D; sessionStorage.getItem(&#x27;username&#x27;);
 
       const decodedToken: DecodedJWT &#x3D; this.decodeToken(
-        sessionStorageToken || &#x27;&#x27;
+        sessionStorageToken ?? &#x27;&#x27;
       );
 
       /**

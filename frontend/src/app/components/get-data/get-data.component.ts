@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { finalize } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { finalize, Subscription } from 'rxjs';
 import { ResponseData } from 'src/app/models/ResponseData.model';
 import { BackendService } from 'src/app/services/backend.service';
 import { CommonService } from 'src/app/services/common.service';
@@ -13,7 +13,7 @@ import { appConstant } from 'src/constants/app.constant';
   templateUrl: './get-data.component.html',
   styleUrls: ['./get-data.component.css'],
 })
-export class GetDataComponent {
+export class GetDataComponent implements OnDestroy {
   /**
    * This is the constructor of this component.
    * @param backendService is used to make the API call to the backend.
@@ -32,6 +32,13 @@ export class GetDataComponent {
   data: ResponseData[] = [];
 
   /**
+   * This is the subscription that would be used in this component. It is initialized with an empty subscription.
+   * @type {Subscription}
+   * @private
+   */
+  private subscription!: Subscription;
+
+  /**
    * This method is used to get all the data from the backend. It will call the [handleGetData]{@link BackendService#handleGetData} method.
    * It will show the loader on the screen while the API call is in progress. After the API call is completed, it will hide the loader. It will show the notification on the screen based on the response from the backend.
    * It subscribes to the [handleGetData]{@link BackendService#handleGetData} to get the data from the backend. It will update the [data]{@link data} with the data received from the backend. For error, it will reset data variable, show the error message on the screen and log the error in the console.
@@ -39,7 +46,7 @@ export class GetDataComponent {
    */
   handleGetData(): void {
     this.commonService.updateLoaderSubject(true);
-    this.backendService
+    this.subscription = this.backendService
       .handleGetData()
       .pipe(
         finalize(() => {
@@ -85,6 +92,15 @@ export class GetDataComponent {
       return new Date(date).toLocaleString();
     } catch {
       return '';
+    }
+  }
+
+  /**
+   * This is called when the component is destroyed. It will unsubscribe from the subscription if it is present.
+   */
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 }

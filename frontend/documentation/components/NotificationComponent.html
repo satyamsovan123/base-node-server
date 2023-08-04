@@ -87,6 +87,7 @@
     </p>
     <p class="comment">
                 <code>OnInit</code>
+                <code>OnDestroy</code>
     </p>
 
 
@@ -151,6 +152,10 @@
                             <li>
                                 <a href="#notification" >notification</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subscription" >subscription</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -163,6 +168,9 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
                             <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
@@ -189,7 +197,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/notification/notification.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/notification/notification.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -247,6 +255,45 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/components/notification/notification.component.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This is called when the component is destroyed. It will unsubscribe from the subscription if it is present.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="ngOnInit"></a>
                     <span class="name">
                         <span ><b>ngOnInit</b></span>
@@ -263,8 +310,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/app/components/notification/notification.component.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/components/notification/notification.component.ts:38</a></div>
                 </td>
             </tr>
 
@@ -312,7 +359,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/components/notification/notification.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/notification/notification.component.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -325,13 +372,47 @@
 
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>subscription</b></span>
+                        <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/notification/notification.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This is the subscription that would be used in this component. It is initialized with an empty subscription.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
 </section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
 import { CommonService } from &#x27;src/app/services/common.service&#x27;;
 import { appConstant } from &#x27;src/constants/app.constant&#x27;;
 
@@ -343,7 +424,7 @@ import { appConstant } from &#x27;src/constants/app.constant&#x27;;
   templateUrl: &#x27;./notification.component.html&#x27;,
   styleUrls: [&#x27;./notification.component.css&#x27;],
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent implements OnInit, OnDestroy {
   /**
    * This is the constructor of this component.
    * @param commonService is used to subscribe to the [notificationSubject]{@link CommonService#notificationSubject}.
@@ -358,18 +439,36 @@ export class NotificationComponent implements OnInit {
   notification: string &#x3D; &#x27;&#x27;;
 
   /**
+   * This is the subscription that would be used in this component. It is initialized with an empty subscription.
+   * @type {Subscription}
+   * @private
+   */
+  private subscription!: Subscription;
+
+  /**
    * This method is used to initialize the component. It will subscribe to the [notificationSubject]{@link CommonService#notificationSubject} to get the updated notification to be shown on the screen.
    */
   ngOnInit(): void {
-    this.commonService.notificationSubject$.subscribe((notification: any) &#x3D;&gt; {
-      this.notification &#x3D; notification;
-      /**
-       * This is used to hide the notification after a certain time.
-       */
-      setTimeout(() &#x3D;&gt; {
-        this.notification &#x3D; &#x27;&#x27;;
-      }, appConstant.hideNotifcationAfter);
-    });
+    this.subscription &#x3D; this.commonService.notificationSubject$.subscribe(
+      (notification: any) &#x3D;&gt; {
+        this.notification &#x3D; notification;
+        /**
+         * This is used to hide the notification after a certain time.
+         */
+        setTimeout(() &#x3D;&gt; {
+          this.notification &#x3D; &#x27;&#x27;;
+        }, appConstant.hideNotifcationAfter);
+      }
+    );
+  }
+
+  /**
+   * This is called when the component is destroyed. It will unsubscribe from the subscription if it is present.
+   */
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
 </code></pre>

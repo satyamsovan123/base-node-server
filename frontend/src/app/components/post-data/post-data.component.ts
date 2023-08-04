@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { finalize } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription, finalize } from 'rxjs';
 import { RequestData } from 'src/app/models/RequestData.model';
 import { BackendService } from 'src/app/services/backend.service';
 import { CommonService } from 'src/app/services/common.service';
@@ -13,7 +13,7 @@ import { appConstant } from 'src/constants/app.constant';
   templateUrl: './post-data.component.html',
   styleUrls: ['./post-data.component.css'],
 })
-export class PostDataComponent {
+export class PostDataComponent implements OnDestroy {
   /**
    * This is the constructor of this component.
    * @param backendService is used to make the API call to the backend.
@@ -39,6 +39,13 @@ export class PostDataComponent {
   title: string = '';
 
   /**
+   * This is the subscription that would be used in this component. It is initialized with an empty subscription.
+   * @type {Subscription}
+   * @private
+   */
+  private subscription!: Subscription;
+
+  /**
    * This method is used to handle sending data to the backend. It will call the [handlePostData]{@link BackendService#handlePostData} method.
    * It will show the loader on the screen while the API call is in progress. After the API call is completed, it will hide the loader. It will show the notification on the screen based on the response from the backend.
    * It subscribes to the [handlePostData]{@link BackendService#handlePostData} to sennd the data to the backend. For error, it will show the error message on the screen and log the error in the console.
@@ -54,7 +61,7 @@ export class PostDataComponent {
       article: this.article,
     };
     this.commonService.updateLoaderSubject(true);
-    this.backendService
+    this.subscription = this.backendService
       .handlePostData(data)
       .pipe(
         finalize(() => {
@@ -81,5 +88,14 @@ export class PostDataComponent {
           }
         },
       });
+  }
+
+  /**
+   * This is called when the component is destroyed. It will unsubscribe from the subscription if it is present.
+   */
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

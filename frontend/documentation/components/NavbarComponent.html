@@ -87,6 +87,7 @@
     </p>
     <p class="comment">
                 <code>OnInit</code>
+                <code>OnDestroy</code>
     </p>
 
 
@@ -151,6 +152,10 @@
                             <li>
                                 <a href="#loggedInUser" >loggedInUser</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subscription" >subscription</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -168,6 +173,9 @@
                             </li>
                             <li>
                                 <a href="#handleSignOut" >handleSignOut</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
@@ -195,7 +203,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/components/navbar/navbar.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/navbar/navbar.component.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -269,8 +277,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/app/components/navbar/navbar.component.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/app/components/navbar/navbar.component.ts:52</a></div>
                 </td>
             </tr>
 
@@ -310,8 +318,8 @@ This is also use to show the logged in user&#39;s name on the screen.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/app/components/navbar/navbar.component.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/components/navbar/navbar.component.ts:43</a></div>
                 </td>
             </tr>
 
@@ -319,6 +327,45 @@ This is also use to show the logged in user&#39;s name on the screen.</p>
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>This method is used to sign out the logged in user when user clicks on the &#39;Sign out&#39; button. It will call the <a href="../injectables/CommonService.html#handleSignOut">handleSignOut</a> method.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/components/navbar/navbar.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This is called when the component is destroyed. It will unsubscribe from the subscription if it is present.</p>
 </div>
 
                     <div class="io-description">
@@ -349,8 +396,8 @@ This is also use to show the logged in user&#39;s name on the screen.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/components/navbar/navbar.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/components/navbar/navbar.component.ts:36</a></div>
                 </td>
             </tr>
 
@@ -398,7 +445,7 @@ This is also use to show the logged in user&#39;s name on the screen.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/navbar/navbar.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/navbar/navbar.component.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -411,14 +458,48 @@ This is also use to show the logged in user&#39;s name on the screen.</p>
 
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>subscription</b></span>
+                        <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/navbar/navbar.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>This is the subscription that would be used in this component. It is initialized with an empty subscription.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
 </section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { CommonService } from &#x27;src/app/services/common.service&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
 
 /**
  * This component is used to show the navigation bar on the screen.
@@ -428,7 +509,7 @@ import { CommonService } from &#x27;src/app/services/common.service&#x27;;
   templateUrl: &#x27;./navbar.component.html&#x27;,
   styleUrls: [&#x27;./navbar.component.css&#x27;],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   /**
    * This is the constructor of this component.
    * @param commonService is used to update the [loggedInUserSubject]{@link CommonService#loggedInUserSubject}.
@@ -440,6 +521,13 @@ export class NavbarComponent implements OnInit {
    * @default &#x27;&#x27;
    */
   loggedInUser: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * This is the subscription that would be used in this component. It is initialized with an empty subscription.
+   * @type {Subscription}
+   * @private
+   */
+  private subscription!: Subscription;
 
   /**
    * This method is used to initialize the component. It will check if the user is logged in or not.
@@ -461,7 +549,7 @@ export class NavbarComponent implements OnInit {
    * This is also use to show the logged in user&#x27;s name on the screen.
    */
   checkIsLoggedIn(): void {
-    this.commonService.loggedInUserSubject.subscribe({
+    this.subscription &#x3D; this.commonService.loggedInUserSubject.subscribe({
       next: (loggedInUser: string) &#x3D;&gt; {
         this.loggedInUser &#x3D; loggedInUser;
       },
@@ -470,6 +558,15 @@ export class NavbarComponent implements OnInit {
         this.commonService.logger(error);
       },
     });
+  }
+
+  /**
+   * This is called when the component is destroyed. It will unsubscribe from the subscription if it is present.
+   */
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
 </code></pre>

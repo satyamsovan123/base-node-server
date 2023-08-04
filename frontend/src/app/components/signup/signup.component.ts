@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs';
+import { Subscription, finalize } from 'rxjs';
 import { SignUp } from 'src/app/models/SignUp.model';
 import { BackendService } from 'src/app/services/backend.service';
 import { CommonService } from 'src/app/services/common.service';
@@ -14,7 +14,7 @@ import { appConstant } from 'src/constants/app.constant';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent {
+export class SignupComponent implements OnDestroy {
   /**
    * This is the constructor of this component.
    * @param backendService is used to make the API call to the backend.
@@ -50,6 +50,13 @@ export class SignupComponent {
   email: string = '';
 
   /**
+   * This is the subscription that would be used in this component. It is initialized with an empty subscription.
+   * @type {Subscription}
+   * @private
+   */
+  private subscription!: Subscription;
+
+  /**
    * This method is used to handle the sign up button click. It will call the [handleSignUp]{@link BackendService#handleSignUp} method.
    * It will show the loader on the screen while the API call is in progress. After the API call is completed, it will hide the loader. It will show the notification on the screen based on the response from the backend.
    * It subscribes to the [handleSignUp]{@link BackendService#handleSignUp} to sign up the user. It will update the [token]{@link CommonService#token} and [username]{@link CommonService#username} in the [commonService]{@link CommonService} based on the response from the backend.
@@ -67,7 +74,7 @@ export class SignupComponent {
       email: this.email ? this.email : undefined,
     };
     this.commonService.updateLoaderSubject(true);
-    this.backendService
+    this.subscription = this.backendService
       .handleSignUp(data)
       .pipe(
         finalize(() => {
@@ -94,5 +101,14 @@ export class SignupComponent {
           );
         },
       });
+  }
+
+  /**
+   * This is called when the component is destroyed. It will unsubscribe from the subscription if it is present.
+   */
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
