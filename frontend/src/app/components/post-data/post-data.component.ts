@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { finalize } from 'rxjs';
-import { requestData } from 'src/app/models/requestData.model';
+import { RequestData } from 'src/app/models/RequestData.model';
 import { BackendService } from 'src/app/services/backend.service';
 import { CommonService } from 'src/app/services/common.service';
+import { appConstant } from 'src/constants/app.constant';
 
 /**
  * This component is used to show form to send new data form on the screen to backend.
@@ -46,9 +47,9 @@ export class PostDataComponent {
   handlePostData() {
     /**
      * This is the data to be sent to the backend.
-     * @type {requestData}
+     * @type {RequestData}
      */
-    const data: requestData = {
+    const data: RequestData = {
       title: this.title,
       article: this.article,
     };
@@ -64,13 +65,15 @@ export class PostDataComponent {
         next: (response: any) => {
           this.commonService.logger(response);
           this.commonService.updateNotificationSubject(
-            response?.message || 'Success'
+            response?.message ||
+              `${appConstant.success} ${appConstant.postData}.`
           );
         },
         error: (error: any) => {
           this.commonService.logger(error);
           this.commonService.updateNotificationSubject(
-            error.error?.message || 'Error'
+            error.error?.message ||
+              `${appConstant.error} ${appConstant.postData}.`
           );
 
           if (error?.status === 401) {

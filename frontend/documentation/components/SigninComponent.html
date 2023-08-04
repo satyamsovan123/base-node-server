@@ -401,13 +401,13 @@ After successful sign in, it will navigate the user to the get data screen.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpResponse } from &#x27;@angular/common/http&#x27;;
-import { Component } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 import { finalize } from &#x27;rxjs&#x27;;
-import { signIn } from &#x27;src/app/models/signIn.model&#x27;;
+import { SignIn } from &#x27;src/app/models/SignIn.model&#x27;;
 import { BackendService } from &#x27;src/app/services/backend.service&#x27;;
 import { CommonService } from &#x27;src/app/services/common.service&#x27;;
+import { appConstant } from &#x27;src/constants/app.constant&#x27;;
 
 /**
  * This component is used to show the sign in page on the screen. It is used to sign in the existing users.
@@ -454,9 +454,9 @@ export class SigninComponent {
   handleSignIn() {
     /**
      * Creating the data to be sent to the backend.
-     * @type {signIn}
+     * @type {SignIn}
      */
-    const data: signIn &#x3D; {
+    const data: SignIn &#x3D; {
       username: this.username,
       password: this.password,
     };
@@ -470,7 +470,9 @@ export class SigninComponent {
       )
       .subscribe({
         next: (response: any) &#x3D;&gt; {
-          const accessToken: string &#x3D; response.headers.get(&#x27;Authorization&#x27;);
+          const accessToken: string &#x3D; response.headers.get(
+            appConstant.authorizationHeaderKey
+          );
           this.commonService.token &#x3D; accessToken;
           const decodedToken &#x3D; this.commonService.decodeToken(accessToken);
           this.commonService.logger(decodedToken);
@@ -478,13 +480,15 @@ export class SigninComponent {
           this.router.navigate([&#x27;/get-data&#x27;]);
 
           this.commonService.updateNotificationSubject(
-            response?.body?.message || &#x27;Success&#x27;
+            response?.body?.message ||
+              &#x60;${appConstant.success} ${appConstant.signIn}.&#x60;
           );
         },
         error: (error: any) &#x3D;&gt; {
           this.commonService.logger(error);
           this.commonService.updateNotificationSubject(
-            error.error?.message || &#x27;Error&#x27;
+            error.error?.message ||
+              &#x60;${appConstant.error} ${appConstant.signIn}.&#x60;
           );
         },
       });

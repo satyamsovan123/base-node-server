@@ -4,7 +4,7 @@
  * @property { number } iat is issue time of the JWT.
  * @property { string } username is username extracted from the JWT.
  */
-export interface decodedJWT {
+export interface DecodedJWT {
   /**
    * This is the expiration time of the JWT.
    */

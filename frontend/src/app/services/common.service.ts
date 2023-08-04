@@ -3,7 +3,8 @@ import { BehaviorSubject, finalize } from 'rxjs';
 import { Router } from '@angular/router';
 import { BackendService } from './backend.service';
 import { environment } from 'src/environments/environment';
-import { decodedJWT } from '../models/decodedJWT.model';
+import { appConstant } from 'src/constants/app.constant';
+import { DecodedJWT } from '../models/decodedJWT.model';
 
 /**
  * This is the common service. It has the methods and shared observables that are used throughout the application. Therefore, it is injected in the [app.module.ts]{@link AppModule} file.
@@ -96,7 +97,7 @@ export class CommonService {
    * @param {string} token is the token to be set.
    */
   set token(token: string) {
-    sessionStorage.setItem('Authorization', token);
+    sessionStorage.setItem(appConstant.authorizationHeaderKey, token);
   }
 
   /**
@@ -104,7 +105,7 @@ export class CommonService {
    * @type {string}
    */
   get token(): string {
-    return sessionStorage.getItem('Authorization') || '';
+    return sessionStorage.getItem(appConstant.authorizationHeaderKey) || '';
   }
 
   /**
@@ -117,7 +118,7 @@ export class CommonService {
     this.updateLoaderSubject(true);
     this.token = '';
     this.username = '';
-    sessionStorage.removeItem('Authorization');
+    sessionStorage.removeItem(appConstant.authorizationHeaderKey);
     sessionStorage.removeItem('username');
 
     /**
@@ -133,11 +134,17 @@ export class CommonService {
       )
       .subscribe({
         next: (response: any) => {
-          this.updateNotificationSubject(response?.body?.message || 'Success');
+          this.updateNotificationSubject(
+            response?.body?.message ||
+              `${appConstant.success} ${appConstant.signOut}.`
+          );
         },
         error: (error: any) => {
           this.logger(error);
-          this.updateNotificationSubject(error.error?.message || 'Error');
+          this.updateNotificationSubject(
+            error.error?.message ||
+              `${appConstant.error} ${appConstant.signOut}.`
+          );
         },
       });
   }
@@ -147,14 +154,14 @@ export class CommonService {
    * @param token is the JWT to be decoded.
    * @example
    * decodeToken(jwt);
-   * @returns { decodedJWT } the decoded JWT.
+   * @returns { DecodedJWT } the decoded JWT.
    */
-  decodeToken(token: string): decodedJWT {
+  decodeToken(token: string): DecodedJWT {
     /**
      * This is the default response. It will be returned if the token is empty or if an error occurs while decoding the JWT.
-     * @type { decodedJWT }
+     * @type { DecodedJWT }
      */
-    let response: decodedJWT = {
+    let response: DecodedJWT = {
       exp: 0,
       iat: 0,
       username: '',
@@ -174,7 +181,7 @@ export class CommonService {
       const base64: string = jwtPayload.replace(/-/g, '+').replace(/_/g, '/');
       const decodedPayload: any = JSON.parse(atob(base64));
       response = decodedPayload;
-      return decodedPayload;
+      return response;
     } catch (error) {
       this.signOut();
       this.logger(error);
@@ -206,10 +213,12 @@ export class CommonService {
    */
   checkSavedCredentials() {
     try {
-      const sessionStorageToken = sessionStorage.getItem('Authorization');
+      const sessionStorageToken = sessionStorage.getItem(
+        appConstant.authorizationHeaderKey
+      );
       const sessionStorageUsername = sessionStorage.getItem('username');
 
-      const decodedToken: decodedJWT = this.decodeToken(
+      const decodedToken: DecodedJWT = this.decodeToken(
         sessionStorageToken || ''
       );
 

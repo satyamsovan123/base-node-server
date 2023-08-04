@@ -186,7 +186,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/post-data/post-data.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/post-data/post-data.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -276,8 +276,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">src/app/components/post-data/post-data.component.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/components/post-data/post-data.component.ts:47</a></div>
                 </td>
             </tr>
 
@@ -328,7 +328,7 @@ If the user is not logged in or the token is expired, then it will sign out the 
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/post-data/post-data.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/post-data/post-data.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -365,7 +365,7 @@ If the user is not logged in or the token is expired, then it will sign out the 
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/post-data/post-data.component.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/post-data/post-data.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -386,9 +386,10 @@ If the user is not logged in or the token is expired, then it will sign out the 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { finalize } from &#x27;rxjs&#x27;;
-import { requestData } from &#x27;src/app/models/requestData.model&#x27;;
+import { RequestData } from &#x27;src/app/models/RequestData.model&#x27;;
 import { BackendService } from &#x27;src/app/services/backend.service&#x27;;
 import { CommonService } from &#x27;src/app/services/common.service&#x27;;
+import { appConstant } from &#x27;src/constants/app.constant&#x27;;
 
 /**
  * This component is used to show form to send new data form on the screen to backend.
@@ -432,9 +433,9 @@ export class PostDataComponent {
   handlePostData() {
     /**
      * This is the data to be sent to the backend.
-     * @type {requestData}
+     * @type {RequestData}
      */
-    const data: requestData &#x3D; {
+    const data: RequestData &#x3D; {
       title: this.title,
       article: this.article,
     };
@@ -450,13 +451,15 @@ export class PostDataComponent {
         next: (response: any) &#x3D;&gt; {
           this.commonService.logger(response);
           this.commonService.updateNotificationSubject(
-            response?.message || &#x27;Success&#x27;
+            response?.message ||
+              &#x60;${appConstant.success} ${appConstant.postData}.&#x60;
           );
         },
         error: (error: any) &#x3D;&gt; {
           this.commonService.logger(error);
           this.commonService.updateNotificationSubject(
-            error.error?.message || &#x27;Error&#x27;
+            error.error?.message ||
+              &#x60;${appConstant.error} ${appConstant.postData}.&#x60;
           );
 
           if (error?.status &#x3D;&#x3D;&#x3D; 401) {

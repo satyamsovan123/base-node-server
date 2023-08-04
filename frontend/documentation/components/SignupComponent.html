@@ -189,7 +189,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/signup/signup.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/signup/signup.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -295,8 +295,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">src/app/components/signup/signup.component.ts:58</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/components/signup/signup.component.ts:59</a></div>
                 </td>
             </tr>
 
@@ -348,7 +348,7 @@ After successful sign up, it will navigate the user to the post data screen.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/signup/signup.component.ts:49</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/signup/signup.component.ts:50</a></div>
                         </td>
                     </tr>
 
@@ -385,7 +385,7 @@ After successful sign up, it will navigate the user to the post data screen.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/signup/signup.component.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/signup/signup.component.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -422,7 +422,7 @@ After successful sign up, it will navigate the user to the post data screen.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/signup/signup.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/signup/signup.component.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -444,9 +444,10 @@ After successful sign up, it will navigate the user to the post data screen.</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 import { finalize } from &#x27;rxjs&#x27;;
-import { signUp } from &#x27;src/app/models/signUp.model&#x27;;
+import { SignUp } from &#x27;src/app/models/SignUp.model&#x27;;
 import { BackendService } from &#x27;src/app/services/backend.service&#x27;;
 import { CommonService } from &#x27;src/app/services/common.service&#x27;;
+import { appConstant } from &#x27;src/constants/app.constant&#x27;;
 
 /**
  * This component is used to show the sign up page on the screen. It is used to create a new user.
@@ -501,9 +502,9 @@ export class SignupComponent {
   handleSignUp() {
     /**
      * Creating the data object to be sent to the backend.
-     * @type {signUp}
+     * @type {SignUp}
      */
-    const data: signUp &#x3D; {
+    const data: SignUp &#x3D; {
       username: this.username,
       password: this.password,
       email: this.email ? this.email : undefined,
@@ -525,13 +526,14 @@ export class SignupComponent {
           this.router.navigate([&#x27;/post-data&#x27;]);
 
           this.commonService.updateNotificationSubject(
-            response?.message || &#x27;Success&#x27;
+            response?.message || &#x60;${appConstant.success} ${appConstant.signUp}.&#x60;
           );
         },
         error: (error: any) &#x3D;&gt; {
           this.commonService.logger(error);
           this.commonService.updateNotificationSubject(
-            error.error?.message || &#x27;Error&#x27;
+            error.error?.message ||
+              &#x60;${appConstant.error} ${appConstant.signUp}.&#x60;
           );
         },
       });

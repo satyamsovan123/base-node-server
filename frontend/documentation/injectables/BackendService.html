@@ -296,7 +296,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handlePostData(data: <a href="../interfaces/requestData.html" target="_self">requestData</a>)</code>
+<code>handlePostData(data: <a href="../interfaces/RequestData.html" target="_self">RequestData</a>)</code>
                 </td>
             </tr>
 
@@ -328,7 +328,7 @@
                                 <tr>
                                     <td>data</td>
                                     <td>
-                                                <code><a href="../interfaces/requestData.html" target="_self" >requestData</a></code>
+                                                <code><a href="../interfaces/RequestData.html" target="_self" >RequestData</a></code>
                                     </td>
 
                                     <td>
@@ -371,7 +371,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handleSignIn(data: <a href="../interfaces/signIn.html" target="_self">signIn</a>)</code>
+<code>handleSignIn(data: <a href="../interfaces/SignIn.html" target="_self">SignIn</a>)</code>
                 </td>
             </tr>
 
@@ -405,7 +405,7 @@
                                 <tr>
                                     <td>data</td>
                                     <td>
-                                                <code><a href="../interfaces/signIn.html" target="_self" >signIn</a></code>
+                                                <code><a href="../interfaces/SignIn.html" target="_self" >SignIn</a></code>
                                     </td>
 
                                     <td>
@@ -493,7 +493,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>handleSignUp(data: <a href="../interfaces/signUp.html" target="_self">signUp</a>)</code>
+<code>handleSignUp(data: <a href="../interfaces/SignUp.html" target="_self">SignUp</a>)</code>
                 </td>
             </tr>
 
@@ -526,7 +526,7 @@
                                 <tr>
                                     <td>data</td>
                                     <td>
-                                                <code><a href="../interfaces/signUp.html" target="_self" >signUp</a></code>
+                                                <code><a href="../interfaces/SignUp.html" target="_self" >SignUp</a></code>
                                     </td>
 
                                     <td>
@@ -641,11 +641,11 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { HttpClient, HttpResponse } from &#x27;@angular/common/http&#x27;;
 import { environment } from &#x27;src/environments/environment&#x27;;
-import { signIn } from &#x27;../models/signIn.model&#x27;;
-import { signUp } from &#x27;../models/signUp.model&#x27;;
-import { requestData } from &#x27;../models/requestData.model&#x27;;
+import { SignIn } from &#x27;../models/SignIn.model&#x27;;
+import { SignUp } from &#x27;../models/SignUp.model&#x27;;
+import { RequestData } from &#x27;../models/RequestData.model&#x27;;
+
 import { apiPathConstant } from &#x27;src/constants/apiPath.constant&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
 
 /**
  * This is the service class for the backend. It is used to make the API calls to the backend. It is injected in the [app.module.ts]{@link AppModule} file as it is used in the whole application for making the API calls.
@@ -674,10 +674,10 @@ export class BackendService {
 
   /**
    * This method is used to handle the sign in API call to the backend. It uses POST method to send the data to the backend. It signs in existing users.
-   * @param {signIn} data is the data to be sent to the backend.
+   * @param {SignIn} data is the data to be sent to the backend.
    * @returns the response from the backend in the form of an observable. Normally, the response body is returned by the API call. But, in this case, response header values are required for getting authorization token set by backend. Therefore, setting the observe: &#x27;response&#x27; option.
    */
-  handleSignIn(data: signIn) {
+  handleSignIn(data: SignIn) {
     return this.httpClient.post(
       this.backendUrl + apiPathConstant.signIn,
       data,
@@ -689,10 +689,10 @@ export class BackendService {
 
   /**
    * This method is used to handle the sign up API call to the backend. It uses post method to send the data to the backend. It creates a new user.
-   * @param {signUp} data
+   * @param {SignUp} data
    * @returns the response from the backend in the form of an observable. Normally, the response body is returned by the API call. But, in this case, response header values are required for getting authorization token set by backend. Therefore, setting the observe: &#x27;response&#x27; option.
    */
-  handleSignUp(data: signUp) {
+  handleSignUp(data: SignUp) {
     return this.httpClient.post(
       this.backendUrl + apiPathConstant.signUp,
       data,
@@ -721,10 +721,10 @@ export class BackendService {
   }
 
   /**
-   * @param {data} data is the data to be sent to the backend.
+   * @param {RequestData} data is the data to be sent to the backend.
    * @returns the response from the backend in the form of an observable.
    */
-  handlePostData(data: requestData) {
+  handlePostData(data: RequestData) {
     return this.httpClient.post(this.backendUrl + apiPathConstant.data, data);
   }
 

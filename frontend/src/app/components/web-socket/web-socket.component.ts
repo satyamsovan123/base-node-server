@@ -27,7 +27,5 @@ export class WebSocketComponent implements OnInit {
    * It will subscribe to the [handleGetWebSocketData]{@link BackendService#handleGetWebSocketData} to get the message from the websocket. It will update the [message]{@link message} with the data received from the websocket.
    * For error, it will log the error in the console.
    */
-  ngOnInit(): void {
-    this.message = 'Hello World!';
-  }
+  ngOnInit(): void {}
 }

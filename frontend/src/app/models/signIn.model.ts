@@ -3,7 +3,7 @@
  * @property { string } username is username of the user.
  * @property { string } password is password of the user.
  */
-export interface signIn {
+export interface SignIn {
   /**
    * This is the username of the user.
    */

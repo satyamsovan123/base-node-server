@@ -3,7 +3,7 @@
  * @property { string } title is title provided by the user.
  * @property { string } article is article provided by the user.
  */
-export interface requestData {
+export interface RequestData {
   /**
    * This is the title provided by the user.
    */

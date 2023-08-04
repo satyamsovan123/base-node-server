@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { finalize } from 'rxjs';
-import { responseData } from 'src/app/models/responseData.model';
+import { ResponseData } from 'src/app/models/ResponseData.model';
 import { BackendService } from 'src/app/services/backend.service';
 import { CommonService } from 'src/app/services/common.service';
+import { appConstant } from 'src/constants/app.constant';
 
 /**
  * This component is used to show all the data from the backend.
@@ -25,10 +26,10 @@ export class GetDataComponent {
 
   /**
    * This is the data to be shown on the screen. It is initialized with an empty array.
-   * @type {[]responseData}
+   * @type {[]ResponseData}
    * @default []
    */
-  data: responseData[] = [];
+  data: ResponseData[] = [];
 
   /**
    * This method is used to get all the data from the backend. It will call the [handleGetData]{@link BackendService#handleGetData} method.
@@ -50,14 +51,16 @@ export class GetDataComponent {
           this.commonService.logger(response.data);
           this.data = response.data;
           this.commonService.updateNotificationSubject(
-            response?.message || 'Success'
+            response?.message ||
+              `${appConstant.success} ${appConstant.getData}.`
           );
         },
         error: (error: any) => {
           this.data = [];
           this.commonService.logger(error);
           this.commonService.updateNotificationSubject(
-            error.error?.message || 'Error'
+            error.error?.message ||
+              `${appConstant.error} ${appConstant.getData}.`
           );
 
           if (error?.status === 401) {

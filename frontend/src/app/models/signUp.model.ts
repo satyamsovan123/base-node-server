@@ -4,7 +4,7 @@
  * @property { string } password is password of the user.
  * @property { string | undefined } email is email of the user, which is optional.
  */
-export interface signUp {
+export interface SignUp {
   /**
    * This is the email of the user. It is optional.
    * @optional

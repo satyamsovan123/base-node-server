@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { signUp } from 'src/app/models/signUp.model';
+import { SignUp } from 'src/app/models/SignUp.model';
 import { BackendService } from 'src/app/services/backend.service';
 import { CommonService } from 'src/app/services/common.service';
+import { appConstant } from 'src/constants/app.constant';
 
 /**
  * This component is used to show the sign up page on the screen. It is used to create a new user.
@@ -58,9 +59,9 @@ export class SignupComponent {
   handleSignUp() {
     /**
      * Creating the data object to be sent to the backend.
-     * @type {signUp}
+     * @type {SignUp}
      */
-    const data: signUp = {
+    const data: SignUp = {
       username: this.username,
       password: this.password,
       email: this.email ? this.email : undefined,
@@ -82,13 +83,14 @@ export class SignupComponent {
           this.router.navigate(['/post-data']);
 
           this.commonService.updateNotificationSubject(
-            response?.message || 'Success'
+            response?.message || `${appConstant.success} ${appConstant.signUp}.`
           );
         },
         error: (error: any) => {
           this.commonService.logger(error);
           this.commonService.updateNotificationSubject(
-            error.error?.message || 'Error'
+            error.error?.message ||
+              `${appConstant.error} ${appConstant.signUp}.`
           );
         },
       });

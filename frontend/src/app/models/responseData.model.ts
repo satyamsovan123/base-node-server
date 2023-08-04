@@ -5,7 +5,7 @@
  * @property { string } article is title that comes from the backend.
  * @property { Date } createdAt is article that comes from the backend.
  */
-export interface responseData {
+export interface ResponseData {
   /**
    * This is the username that comes from the backend.
    */

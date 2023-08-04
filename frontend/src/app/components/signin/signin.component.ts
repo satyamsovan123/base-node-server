@@ -1,10 +1,10 @@
-import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { signIn } from 'src/app/models/signIn.model';
+import { SignIn } from 'src/app/models/SignIn.model';
 import { BackendService } from 'src/app/services/backend.service';
 import { CommonService } from 'src/app/services/common.service';
+import { appConstant } from 'src/constants/app.constant';
 
 /**
  * This component is used to show the sign in page on the screen. It is used to sign in the existing users.
@@ -51,9 +51,9 @@ export class SigninComponent {
   handleSignIn() {
     /**
      * Creating the data to be sent to the backend.
-     * @type {signIn}
+     * @type {SignIn}
      */
-    const data: signIn = {
+    const data: SignIn = {
       username: this.username,
       password: this.password,
     };
@@ -67,7 +67,9 @@ export class SigninComponent {
       )
       .subscribe({
         next: (response: any) => {
-          const accessToken: string = response.headers.get('Authorization');
+          const accessToken: string = response.headers.get(
+            appConstant.authorizationHeaderKey
+          );
           this.commonService.token = accessToken;
           const decodedToken = this.commonService.decodeToken(accessToken);
           this.commonService.logger(decodedToken);
@@ -75,13 +77,15 @@ export class SigninComponent {
           this.router.navigate(['/get-data']);
 
           this.commonService.updateNotificationSubject(
-            response?.body?.message || 'Success'
+            response?.body?.message ||
+              `${appConstant.success} ${appConstant.signIn}.`
           );
         },
         error: (error: any) => {
           this.commonService.logger(error);
           this.commonService.updateNotificationSubject(
-            error.error?.message || 'Error'
+            error.error?.message ||
+              `${appConstant.error} ${appConstant.signIn}.`
           );
         },
       });
