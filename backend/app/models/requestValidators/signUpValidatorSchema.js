@@ -1,6 +1,19 @@
 const Joi = require("joi");
 const { fieldConstant, responseConstant } = require("../../../constants");
 
+/**
+ * This is the schema for sign up validation. It validates req.body fields in the signUp route.
+ * @typedef {Joi.ObjectSchema} signUpValidatorSchema
+ * @property {string} username - The username to validate.
+ * @property {string} email - The email to validate.
+ * @property {string} password - The password to validate.
+ */
+/**
+ * This Joi model {@link signUpValidatorSchema|signUpValidatorSchema} is used for sign-up request validation.
+ * @constant
+ * @memberof app/models
+ * @exports app/models/signUpValidatorSchema
+ */
 const signUpValidatorSchema = Joi.object({
   username: Joi.string()
     .alphanum()

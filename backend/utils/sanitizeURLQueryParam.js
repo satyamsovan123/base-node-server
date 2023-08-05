@@ -1,5 +1,11 @@
-const { parse } = require("dotenv");
-
+/**
+ * This function sanitizes the offset value from the URL query parameter.
+ * It converts the offset value to a number and returns it, if it is a number. Otherwise, it returns 0.
+ * @param {string} offset is the offset value from the URL query parameter.
+ * @example sanitizeURLQueryParam("-45.3"); // 0
+ * @memberof module:utils
+ * @returns {number} sanitized offset value.
+ */
 const sanitizeURLQueryParam = (offset) => {
   let sanitizedOffset = 0;
 

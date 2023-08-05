@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>app/controllers/index.js - base-node-server</title>
+    
+    <meta name="description" content="base-node-server" />
+    
+        <meta name="keywords" content="base-server" />
+        <meta name="keyword" content="base-server" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="wrap">
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/satyamsovan123/base-node-server/tree/main/backend" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h3>Global</h3><ul><li><a href="global.html#CustomResponse">CustomResponse</a></li><li><a href="global.html#dataValidatorSchema">dataValidatorSchema</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#signInValidatorSchema">signInValidatorSchema</a></li><li><a href="global.html#signUpValidatorSchema">signUpValidatorSchema</a></li><li><a href="global.html#user">user</a></li></ul><h3>Modules</h3><ul><li><a href="module-app_controllers.html">app/controllers</a></li><li><a href="module-app_controllers_authentication.html">app/controllers/authentication</a><ul class='methods'><li data-type='method'><a href="module-app_controllers_authentication.html#.checkExistingUser">checkExistingUser</a></li><li data-type='method'><a href="module-app_controllers_authentication.html#.signIn">signIn</a></li><li data-type='method'><a href="module-app_controllers_authentication.html#.signOut">signOut</a></li><li data-type='method'><a href="module-app_controllers_authentication.html#.signUp">signUp</a></li></ul></li><li><a href="module-app_controllers_data.html">app/controllers/data</a><ul class='methods'><li data-type='method'><a href="module-app_controllers_data.html#.getData">getData</a></li><li data-type='method'><a href="module-app_controllers_data.html#.getRandomData">getRandomData</a></li><li data-type='method'><a href="module-app_controllers_data.html#.postData">postData</a></li></ul></li><li><a href="module-app_middlewares.html">app/middlewares</a><ul class='methods'><li data-type='method'><a href="module-app_middlewares.html#.ignoreAuthentication">ignoreAuthentication</a></li><li data-type='method'><a href="module-app_middlewares.html#.verifyJWT">verifyJWT</a></li><li data-type='method'><a href="module-app_middlewares.html#.verifyRequest">verifyRequest</a></li></ul></li><li><a href="module-app_models.html">app/models</a></li><li></li><li><a href="module-app_models_customResponse.html">app/models/customResponse</a></li><li><a href="module-app_models_dataValidatorSchema.html">app/models/dataValidatorSchema</a></li><li><a href="module-app_models_post.html">app/models/post</a></li><li><a href="module-app_models_signInValidatorSchema.html">app/models/signInValidatorSchema</a></li><li><a href="module-app_models_signUpValidatorSchema.html">app/models/signUpValidatorSchema</a></li><li><a href="module-app_models_user.html">app/models/user</a></li><li><a href="module-app_routes.html">app/routes</a><ul class='methods'><li data-type='method'><a href="module-app_routes.html#.startWebSocket">startWebSocket</a></li></ul></li><li><a href="module-app_routes_authentication.html">app/routes/authentication</a></li><li><a href="module-app_routes_data.html">app/routes/data</a></li><li><a href="module-configs.html">configs</a><ul class='members'><li data-type='member'><a href="module-configs.html#.customLabels">customLabels</a></li><li data-type='member'><a href="module-configs.html#.paginationOptions">paginationOptions</a></li></ul><ul class='methods'><li data-type='method'><a href="module-configs.html#.connectToMongoDB">connectToMongoDB</a></li></ul></li><li><a href="module-constants.html">constants</a><ul class='members'><li data-type='member'><a href="module-constants.html#.apiConstant">apiConstant</a></li><li data-type='member'><a href="module-constants.html#.apiVerb">apiVerb</a></li><li data-type='member'><a href="module-constants.html#.fieldConstant">fieldConstant</a></li><li data-type='member'><a href="module-constants.html#.responseCodeConstant">responseCodeConstant</a></li><li data-type='member'><a href="module-constants.html#.responseConstant">responseConstant</a></li><li data-type='member'><a href="module-constants.html#.serverConstant">serverConstant</a></li></ul></li><li><a href="module-utils.html">utils</a><ul class='methods'><li data-type='method'><a href="module-utils.html#.compare">compare</a></li><li data-type='method'><a href="module-utils.html#.encrypt">encrypt</a></li><li data-type='method'><a href="module-utils.html#.generateJWT">generateJWT</a></li><li data-type='method'><a href="module-utils.html#.getSampleData">getSampleData</a></li><li data-type='method'><a href="module-utils.html#.getServerDetails">getServerDetails</a></li><li data-type='method'><a href="module-utils.html#.logger">logger</a></li><li data-type='method'><a href="module-utils.html#.responseBuilder">responseBuilder</a></li><li data-type='method'><a href="module-utils.html#.sanitizeURLQueryParam">sanitizeURLQueryParam</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">app/controllers/index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file This file is the entry point for all the controllers. It exports all the controllers.
+ * @module app/controllers
+ * @requires app/controllers/data
+ * @requires app/controllers/authentication
+ */
+const { postData } = require("./data/postData");
+const { getData, getRandomData } = require("./data/getData");
+const { getWebSocketData } = require("./getWebSocketData/getWebSocketData");
+const { signIn } = require("./authentication/signIn");
+const { signUp } = require("./authentication/signUp");
+const { signOut } = require("./authentication/signOut");
+
+module.exports = {
+  postData,
+  getData,
+  getRandomData,
+  getWebSocketData,
+  signIn,
+  signUp,
+  signOut,
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sat Aug 05 2023 16:17:07 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

@@ -1,6 +1,19 @@
 const Joi = require("joi");
 const { fieldConstant, responseConstant } = require("../../../constants");
 
+/**
+ * This is the schema for data validation. It validates req.body fields in the postData route.
+ * @typedef {Joi.ObjectSchema} dataValidatorSchema
+ * @property {string} title - The title field to validate.
+ * @property {string} article - The article field to validate.
+ * @property {string} username - The username field to validate.
+ */
+/**
+ * This Joi model {@link dataValidatorSchema|dataValidatorSchema} is used for data validation in request body.
+ * @constant
+ * @memberof app/models
+ * @exports app/models/dataValidatorSchema
+ */
 const dataValidatorSchema = Joi.object({
   title: Joi.string()
     .min(1)

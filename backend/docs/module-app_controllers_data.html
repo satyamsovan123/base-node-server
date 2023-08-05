@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>app/controllers/data - base-node-server</title>
+    
+    <meta name="description" content="base-node-server" />
+    
+        <meta name="keywords" content="base-server" />
+        <meta name="keyword" content="base-server" />
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="wrap">
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/satyamsovan123/base-node-server/tree/main/backend" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h3>Global</h3><ul><li><a href="global.html#CustomResponse">CustomResponse</a></li><li><a href="global.html#dataValidatorSchema">dataValidatorSchema</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#signInValidatorSchema">signInValidatorSchema</a></li><li><a href="global.html#signUpValidatorSchema">signUpValidatorSchema</a></li><li><a href="global.html#user">user</a></li></ul><h3>Modules</h3><ul><li><a href="module-app_controllers.html">app/controllers</a></li><li><a href="module-app_controllers_authentication.html">app/controllers/authentication</a><ul class='methods'><li data-type='method'><a href="module-app_controllers_authentication.html#.checkExistingUser">checkExistingUser</a></li><li data-type='method'><a href="module-app_controllers_authentication.html#.signIn">signIn</a></li><li data-type='method'><a href="module-app_controllers_authentication.html#.signOut">signOut</a></li><li data-type='method'><a href="module-app_controllers_authentication.html#.signUp">signUp</a></li></ul></li><li><a href="module-app_controllers_data.html">app/controllers/data</a><ul class='methods'><li data-type='method'><a href="module-app_controllers_data.html#.getData">getData</a></li><li data-type='method'><a href="module-app_controllers_data.html#.getRandomData">getRandomData</a></li><li data-type='method'><a href="module-app_controllers_data.html#.postData">postData</a></li></ul></li><li><a href="module-app_middlewares.html">app/middlewares</a><ul class='methods'><li data-type='method'><a href="module-app_middlewares.html#.ignoreAuthentication">ignoreAuthentication</a></li><li data-type='method'><a href="module-app_middlewares.html#.verifyJWT">verifyJWT</a></li><li data-type='method'><a href="module-app_middlewares.html#.verifyRequest">verifyRequest</a></li></ul></li><li><a href="module-app_models.html">app/models</a></li><li></li><li><a href="module-app_models_customResponse.html">app/models/customResponse</a></li><li><a href="module-app_models_dataValidatorSchema.html">app/models/dataValidatorSchema</a></li><li><a href="module-app_models_post.html">app/models/post</a></li><li><a href="module-app_models_signInValidatorSchema.html">app/models/signInValidatorSchema</a></li><li><a href="module-app_models_signUpValidatorSchema.html">app/models/signUpValidatorSchema</a></li><li><a href="module-app_models_user.html">app/models/user</a></li><li><a href="module-app_routes.html">app/routes</a><ul class='methods'><li data-type='method'><a href="module-app_routes.html#.startWebSocket">startWebSocket</a></li></ul></li><li><a href="module-app_routes_authentication.html">app/routes/authentication</a></li><li><a href="module-app_routes_data.html">app/routes/data</a></li><li><a href="module-configs.html">configs</a><ul class='members'><li data-type='member'><a href="module-configs.html#.customLabels">customLabels</a></li><li data-type='member'><a href="module-configs.html#.paginationOptions">paginationOptions</a></li></ul><ul class='methods'><li data-type='method'><a href="module-configs.html#.connectToMongoDB">connectToMongoDB</a></li></ul></li><li><a href="module-constants.html">constants</a><ul class='members'><li data-type='member'><a href="module-constants.html#.apiConstant">apiConstant</a></li><li data-type='member'><a href="module-constants.html#.apiVerb">apiVerb</a></li><li data-type='member'><a href="module-constants.html#.fieldConstant">fieldConstant</a></li><li data-type='member'><a href="module-constants.html#.responseCodeConstant">responseCodeConstant</a></li><li data-type='member'><a href="module-constants.html#.responseConstant">responseConstant</a></li><li data-type='member'><a href="module-constants.html#.serverConstant">serverConstant</a></li></ul></li><li><a href="module-utils.html">utils</a><ul class='methods'><li data-type='method'><a href="module-utils.html#.compare">compare</a></li><li data-type='method'><a href="module-utils.html#.encrypt">encrypt</a></li><li data-type='method'><a href="module-utils.html#.generateJWT">generateJWT</a></li><li data-type='method'><a href="module-utils.html#.getSampleData">getSampleData</a></li><li data-type='method'><a href="module-utils.html#.getServerDetails">getServerDetails</a></li><li data-type='method'><a href="module-utils.html#.logger">logger</a></li><li data-type='method'><a href="module-utils.html#.responseBuilder">responseBuilder</a></li><li data-type='method'><a href="module-utils.html#.sanitizeURLQueryParam">sanitizeURLQueryParam</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">app/controllers/data</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>This file is the entry point for all the controllers/data. It exports all methods from the controllers/data.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_controllers_data_index.js.html">app/controllers/data/index.js</a>, <a href="app_controllers_data_index.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+                <div class="description usertext">This file is the entry point for all the controllers/data. It exports all methods from the controllers/data.</div>
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getData"><span class="type-signature type-signature-async, static">(async, static) </span>getData<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>GET /api/data?offset=0
+<br/>
+This function is used to get all the data from the database. It uses the pagination options from the <a href="module-configs.html"><code>paginationOptions</code></a> file and the <a href="module-utils.html"><code>sanitizeURLQueryParam</code></a> function to sanitize the offset from the query params.
+If no data is found, it sends a failure response.
+For response handling, it uses the <a href="module-utils.html"><code>responseBuilder</code></a> function from the utils folder.
+It is wrapped in a try-catch block to catch any errors. In case of an error, it logs the error and sends a generic failure response.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_controllers_data_getData.js.html">app/controllers/data/getData.js</a>, <a href="app_controllers_data_getData.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>// possible responses for this endpoint
+ {
+   "data": {
+     "docs": [{ "username": "", "title": "", "article": "", "createdAt": "" }],
+     "totalDocs": 0,
+     "offset": 0,
+     "limit": 0
+   } | {},
+   "message": "/data successful." | "No data found." | "Token expired. Please signin again." | "/data failed."
+   "code": 200 | 404 | 401 | 500
+ }</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">is the request object containing the HTTP request headers and the request body.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">is the response object containing the HTTP response headers and the response body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getRandomData"><span class="type-signature type-signature-async, static">(async, static) </span>getRandomData<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>GET /api/random-data
+<br/>
+This function is used to get a random data from the database. This endpoint does not use pagination and doen not uses verifyJWT middleware.
+If no data is found, it sends a failure response.
+For response handling, it uses the <a href="module-utils.html"><code>responseBuilder</code></a> function from the utils folder.
+It is wrapped in a try-catch block to catch any errors. In case of an error, it logs the error and sends a generic failure response.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_controllers_data_getData.js.html">app/controllers/data/getData.js</a>, <a href="app_controllers_data_getData.js.html#line111">line 111</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>// possible responses for this endpoint
+ {
+   "data": { "username": "", "title": "", "article": "", "createdAt": "" } | {},
+   "message": "/data successful." | "No data found." | "/data failed."
+   "code": 200 | 404 | 500
+ }</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">is the request object containing the HTTP request headers and the request body.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">is the response object containing the HTTP response headers and the response body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".postData"><span class="type-signature type-signature-async, static">(async, static) </span>postData<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>POST /api/data
+<br/>
+This function is used to post data to the database.
+If title and article doesn't match the Joi schema, it sends a failure response with the appropriate message in the response body. This is done in the <a href="module-app_middlewares.html"><code>verifyRequest</code></a> from the middlewares folder.
+For response handling, it uses the <a href="module-utils.html"><code>responseBuilder</code></a> function from the utils folder.
+It is wrapped in a try-catch block to catch any errors. In case of an error, it logs the error and sends a generic failure response.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_controllers_data_postData.js.html">app/controllers/data/postData.js</a>, <a href="app_controllers_data_postData.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-examples">Example</h5>
+    
+    <pre class="prettyprint"><code>// possible responses for this endpoint
+ {
+   "data": {
+        "username": "",
+        "title": "",
+        "article": "",
+        "_id": "",
+        "createdAt": "",
+        "updatedAt": "",
+        "__v": 0
+      } | {},
+   "message": "/data successful." | "Token expired. Please signin again." | "Please provide valid data." | "/data failed."
+   "code": 200 | 401 | 400 | 500
+ }</code></pre>
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">is the request object containing the HTTP request headers and the request body.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">is the response object containing the HTTP response headers and the response body.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Sat Aug 05 2023 16:17:07 GMT+0530 (India Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

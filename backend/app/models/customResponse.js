@@ -1,3 +1,16 @@
+/**
+ * Custom response class representing a custom response object.
+ * @typedef {Joi.ObjectSchema} CustomResponse
+ * @property {{}} data - The data of the response.
+ * @property {number} code - The status code of the response.
+ * @property {string} message - The message of the response.
+ */
+/**
+ * This mongoose model represents the {@link CustomResponse|CustomResponse} collection in the database.
+ * @constant
+ * @memberof app/models
+ * @exports app/models/customResponse
+ */
 const { serverConstant } = require("../../constants/serverConstant");
 const {
   responseConstant,
@@ -5,10 +18,6 @@ const {
 } = require("../../constants/responseConstant");
 
 class CustomResponse {
-  data = {};
-  message = serverConstant.GENERIC_FAILURE;
-  code = responseCodeConstant.GENERIC_FAILURE;
-
   constructor(
     data = {},
     message = serverConstant.GENERIC_FAILURE,

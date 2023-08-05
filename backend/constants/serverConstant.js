@@ -1,3 +1,10 @@
+/**
+ * These are the constants used throughout the application. They are related to the server.
+ * @memberof module:constants
+ * @constant
+ * @type {object}
+ *
+ */
 const serverConstant = {
   GENERIC_FAILURE: "Some error occured. Please try again later.",
   GENERIC_SUCCESS: "Successfully processed request.",

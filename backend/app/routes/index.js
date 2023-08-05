@@ -1,16 +1,16 @@
+/**
+ * This file is used to export all the routes. It is used in app.js.
+ * @module app/routes
+ * @requires app/routes/data
+ * @requires app/routes/authentication
+ */
+
 const express = require("express");
 const app = express();
 const router = express.Router();
 const { responseBuilder } = require("../../utils/responseBuilder");
-const { verifyRequest } = require("../middlewares/verifyRequest");
-const { verifyJWT } = require("../middlewares/verifyJWT");
-const path = require("path");
-
-const publicDirectory = path.join(__dirname, "../../public");
-const filePath = path.join(publicDirectory, "index.html");
 
 const { responseCodeConstant, serverConstant } = require("../../constants");
-const { ignoreAuthentication } = require("../middlewares");
 
 const baseURL = serverConstant.BASE_API;
 

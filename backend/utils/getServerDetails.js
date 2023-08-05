@@ -1,8 +1,16 @@
 const { serverConstant } = require("../constants");
-
 require("dotenv").config();
 
+/**
+ * This function returns server details. It is used to display server details on the console.
+ * This is wrapped in a try-catch block to catch any errors.
+ * @example getServerDetails();
+ * @memberof module:utils
+ * @returns {void}
+ */
+
 const getServerDetails = () => {
+  // It displays the server details like process ID, port, environment, database, pagination, authentication, web socket port etc.
   try {
     console.log(`-`.repeat(serverConstant.APP_NAME.length + 35));
     console.log(

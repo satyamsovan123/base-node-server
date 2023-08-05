@@ -1,20 +1,14 @@
-# Base NodeJS Server v0.0.1
+## Base NodeJS Server v0.0.1
 
-<br>
+### Introduction
 
-## Introduction
+This application serves as the base NodeJS server folder for developing NodeJS severs. This is a very basic boiler plate web server created. It has been documented, but I always strive to do better. Some key features for this applications are -
+It has Mongoose models for database schema, Joi models and middlewares for request validations. It has routes and controllers pre configured. It also has JWT as authentication. It has utilities functions for usual tasks. It has MongoDB configured.
 
-This application serves as the frontend for [base-node-server](https://github.com/satyamsovan123/base-node-server/blob/main/backend/README.md) application.
-This is a very basic single page web application created to test out the base-node-server in the browser. It has been documented, but I always strive to do better.
+### Running the application
 
-## Running the application
+Run `nodemon app.js` for development server. Navigate to [http://localhost:3000/](http://localhost:3000/) for accessing API. The application will automatically reload if you change any of the source files.
 
-Run `ng serve` or `npm run development` for development server. Run `npm run production` for production server. Navigate to [http://localhost:4200/](http://localhost:4200/). The application will automatically reload if you change any of the source files.
+### Documentation for the application
 
-## Documentation for the application
-
-Run `npm run compdoc` for generating documentation. Navigate to [http://127.0.0.1:5500/frontend/documentation/index.html](http://127.0.0.1:5500/frontend/documentation/index.html) for the documentation.
-
-## Building the application (for production)
-
-Run `npm build` for generating production build files. Navigate to [dist](../frontend/dist/) folder to see the files.
+Run `npm run jsdoc` for generating documentation. Check [index.html](index.html) folder for documentation.

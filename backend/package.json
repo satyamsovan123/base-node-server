@@ -4,7 +4,8 @@
   "description": "This is the base node server for Node JS projects.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jsdoc": "jsdoc -c jsdoc.json -t node_modules/docdash"
   },
   "keywords": [
     "base-node-server, node-backend"
@@ -15,6 +16,7 @@
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "docdash": "^2.0.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "helmet": "^7.0.0",

@@ -1,3 +1,9 @@
+/**
+ * These are the constants used throughout the application. These are related to the response messages.
+ * @constant
+ * @type {object}
+ * @memberof module:constants
+ */
 const responseConstant = {
   STATUS_SUCCESSFUL: "is successful.",
   STATUS_FAILURE: "failed.",
@@ -7,8 +13,8 @@ const responseConstant = {
   CANNOT_BE_EMPTY: "cannot be empty.",
   PLEASE_PROVIDE_VALID_DATA: "Please provide valid data.",
   PLEASE_REMOVE_EXTRA_FIELDS: "Please remove extra data.",
-  UNAUTHORIZED: "You are not authorized. Please login.",
-  TOKEN_EXPIRED: "Token expired. Please login again.",
+  UNAUTHORIZED: "You are not authorized. Please signin.",
+  TOKEN_EXPIRED: "Token expired. Please signin again.",
   USER_ALREADY_REGISTERED: "Username already taken. Please try again.",
   USER_NOT_REGISTERED: "No username found. Please signup.",
   USER_NOT_REGISTERED: "No username found. Please signup.",
@@ -20,6 +26,12 @@ const responseConstant = {
   NO_DATA_FOUND: "No data found.",
 };
 
+/**
+ * These are the constants used throughout the application. These are related to the fields in the request body.
+ * @constant
+ * @type {object}
+ * @memberof module:constants
+ */
 const fieldConstant = {
   USERNAME: "Username",
   EMAIL: "Email",
@@ -29,6 +41,12 @@ const fieldConstant = {
   DATE: "Date",
 };
 
+/**
+ * These are the constants used throughout the application. These are the response codes.
+ * @constant
+ * @type {object}
+ * @memberof module:constants
+ */
 const responseCodeConstant = {
   GENERIC_FAILURE: 500,
   GENERIC_SUCCESS: 200,

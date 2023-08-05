@@ -1,6 +1,18 @@
 const Joi = require("joi");
 const { fieldConstant, responseConstant } = require("../../../constants");
 
+/**
+ * This is the schema for sign in validation. It validates req.body fields in the signIn route.
+ * @typedef {Joi.ObjectSchema} signInValidatorSchema
+ * @property {string} username - The username to validate.
+ * @property {string} password - The password to validate.
+ */
+/**
+ * This Joi model {@link signInValidatorSchema|signInValidatorSchema} is used for sign-in request validation.
+ * @constant
+ * @memberof app/models
+ * @exports app/models/signInValidatorSchema
+ */
 const signInValidatorSchema = Joi.object({
   username: Joi.string()
     .alphanum()

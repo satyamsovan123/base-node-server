@@ -1,3 +1,17 @@
+/**
+ * Schema for mongoose user schema.
+ * @typedef {mongoose.Schema} user
+ * @property {string} username - The username to validate.
+ * @property {string} email - The email to validate.
+ * @property {string} password - The password to validate.
+ */
+/**
+ * This mongoose model represents the {@link user|user} collection in the database.
+ * @constant
+ * @memberof app/models
+ * @exports app/models/user
+ */
+
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 const mongoosePaginate = require("mongoose-paginate-v2");

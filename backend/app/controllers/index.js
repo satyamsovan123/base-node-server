@@ -1,3 +1,9 @@
+/**
+ * @file This file is the entry point for all the controllers. It exports all the controllers.
+ * @module app/controllers
+ * @requires app/controllers/data
+ * @requires app/controllers/authentication
+ */
 const { postData } = require("./data/postData");
 const { getData, getRandomData } = require("./data/getData");
 const { getWebSocketData } = require("./getWebSocketData/getWebSocketData");
