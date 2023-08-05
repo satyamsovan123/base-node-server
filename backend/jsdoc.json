@@ -4,7 +4,7 @@
   "opts": {
     "template": "assets/template/docdash/",
     "encoding": "utf8",
-    "destination": "./docs/",
+    "destination": "./documentation/",
     "recurse": true,
     "verbose": true
   },
