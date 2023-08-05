@@ -11,4 +11,4 @@ Run `nodemon app.js` for development server. Navigate to [http://localhost:3000/
 
 ### Documentation for the application
 
-Run `npm run jsdoc` for generating documentation. Check [index.html](documentation/index.html) folder for documentation.
+Run `npm run jsdoc` for generating documentation. Check [index.html](documentation/index.html) or use live server to access `http://127.0.0.1:5500/backend/documentation/` folder for documentation.

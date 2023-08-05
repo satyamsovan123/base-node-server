@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "b76cc56e-0c33-40e3-8c2b-584ed1be14f2",
+		"name": "base-node-server",
+		"description": "These API requests are used for testing the base-node-server backend application.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14396283"
+	},
+	"item": [
+		{
+			"name": "Data",
+			"item": [
+				{
+					"name": "Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"title\": \"\",\n      \"article\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}data",
+							"host": [
+								"{{server}}data"
+							]
+						},
+						"description": "This endpoint is used to add new data from client to database. This endpoint requires authorization. It requires title and article field. If one of the field is empty or invalid or missing form the JSON, it responds with error JSON. If everything is successful, it returns status code as 200.  \n{  \n\"title\": \"\",\n\n\"article\": \"\"  \n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}data?offset=0",
+							"host": [
+								"{{server}}data"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "This is used by the backkend to get the next set of documents. It defaults to 0 in case of any errors. It can be increased until it reaches value of totalDocs."
+								}
+							]
+						},
+						"description": "This endpoint sends all the data from database to client. This endpoint requires authorization. If there are no data present in the database, the status code 404 is sent to client. If some error occured while getting data then status code 500 is sent to client. This API also needs offset in URL query parameter, which defaults to 0 in case of any errors. Client can increase the offset value until it reaches value of totalDocs. The limit for now is 3 from the backend.  \n{  \n\"data\": {\n\n\"docs\": \\[ {\"username\": \"\", \"title\": \"\", \"article\": \"\", \"createdAt\": \"\"}\\],  \n\"totalDocs\": 0,\n\n\"offset\": 0,\n\n\"limit\": 3\n\n},\n\n\"message\": \"/data is successful.\",\n\n\"code\": 200\n\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Random data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}random-data",
+							"host": [
+								"{{server}}random-data"
+							]
+						},
+						"description": "This endpoint sends a random data from database to client. This specific endpoint doesn't requires authorization. If there are no data present in the database, the status code 404 is sent to client. If some error occured while getting data then status code 500 is sent to client. If there are some data in the database, then a random data is selected and sent to client.  \n{  \n\"data\": { \"username\": \"\", \"title\": \"\", \"article\": \"\", \"createdAt\": \"\" },\n\n\"message\": \"/data is successful.\",\n\n\"code\": 200\n\n}"
+					},
+					"response": []
+				}
+			],
+			"description": "Data covers services for getting and adding new data to database. It usually needs authorization headers that client might have received after successful authentication.",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Sign up",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"username\": \"\",\n      \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}signup",
+							"host": [
+								"{{server}}signup"
+							]
+						},
+						"description": "This endpoint is used for signing up by passing username, password and email in request body. It requires username and password, however email is optional (email cannot be invalid or empty string). If one of the field is empty or invalid or missing form the JSON, it responds with error JSON. If username is already present, then it also returns error JSON. If everything is successful, it returns status code as 200. It also provides a JWT in response header ( \"authorization\": \"Bearer \" + JWT)\n\n{  \n\"username\": \"\",\n\n\"password\": \"\",\n\n\"email\": \"\"  \n}  \nTo use this in Postman, update the value of token in the global variables with an actual JWT."
+					},
+					"response": []
+				},
+				{
+					"name": "Sign in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"username\": \"\",\n      \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}signin",
+							"host": [
+								"{{server}}signin"
+							]
+						},
+						"description": "This endpoint is used for signing in by passing username and password in body. It requires both of the field. If one of the field is empty or invalid or missing form the JSON, it responds with error JSON. If credentials (username or password) are not present or matching, then it also returns error JSON. If everything is successful, it returns status code as 200. It also provides a JWT in response header ( \"authorization\": \"Bearer \" + JWT)\n\n{  \n\"username\": \"\",\n\n\"password\": \"\"  \n}\n\nTo use this in Postman, update the value of token in the global variables with an actual JWT."
+					},
+					"response": []
+				},
+				{
+					"name": "Sign out",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}signout",
+							"host": [
+								"{{server}}signout"
+							]
+						},
+						"description": "IDK why this endpoint exists. But somehow it does. It either returns status code as 200 or status code as 500.\n\n{  \n\"data\": {},\n\n\"message\": \"Sign out successful.\",\n\n\"code\": 200\n\n}"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication covers services like signing up, signing in and signing out. After successful authentication, client must send the JWT in the request header ( \"authorization\": \"Bearer \" + JWT) for subsequent requests for access data."
+		},
+		{
+			"name": "Server Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				},
+				"description": "This endpoint returns the status of server. It will either return status code as 200 or status code as 500.\n\n{  \n\"data\": {},\n\n\"message\": \"Server is working fine.\",\n\n\"code\": 200\n\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Error",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}some_random_string",
+					"host": [
+						"{{server}}some_random_string"
+					]
+				},
+				"description": "This endpoint always returns error.\n\n{\n\n\"data\": {},  \n\"message\": \"This endpoint doesn't exists. Please use [http://localhost:3000/api]() to access the API.\",\n\n\"code\": 404\n\n}"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
